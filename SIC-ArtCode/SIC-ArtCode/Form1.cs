@@ -15,25 +15,21 @@ namespace SIC_ArtCode
 {
     public partial class Form1 : Form
     {
-        MySqlConnection conector = new MySqlConnection("server=localhost;Uid=root;Password='';Database=Contables;Port=3306"); //Deben crear en workbech una base de datos.
+       
         public Form1()
         {
             InitializeComponent();
+        }        
+
+        private void agregarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarCuenta nuevaCuenta = new AgregarCuenta();
+            nuevaCuenta.ShowDialog();
         }
 
-        private void btnConectar_Click(object sender, EventArgs e) //Funcion para conectar el programa con la BD
+        private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                conector.Open();
-                lblEstado.Text="Estado de Conexión: Conectado";
-                panel1.BackColor = Color.Green;
-                conector.Close();
-            }
-            catch
-            {
-                conector.Close();
-            }
+
         }
     }
 }
