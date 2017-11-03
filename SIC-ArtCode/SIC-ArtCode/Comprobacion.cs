@@ -12,7 +12,7 @@ namespace SIC_ArtCode
 {
     public partial class Comprobacion : Form
     {
-        public double recursos = 0, participaciones = 0;
+        public double recursos = 0, participaciones = 0, resultado=0;
         Global nuevo = new Global();        
         public Comprobacion()
         {
@@ -24,11 +24,13 @@ namespace SIC_ArtCode
             double sumaAct = nuevo.sumatoriaCuentas("activo");
             double sumaPas = nuevo.sumatoriaCuentas("pasivo");
             double sumaCap = nuevo.sumatoriaCuentas("capital");
+            double sumaRes = nuevo.sumatoriaCuentas("resultado");
             recursos = nuevo.sumatoriaCuentas("activo");
-            participaciones = nuevo.sumatoriaCuentas("pasivo") + nuevo.sumatoriaCuentas("capital");
+            participaciones = nuevo.sumatoriaCuentas("pasivo") + nuevo.sumatoriaCuentas("capital")+nuevo.sumatoriaCuentas("resultado");
             this.label1.Text=sumaAct.ToString();
             this.label2.Text = sumaPas.ToString();
             this.label3.Text = sumaCap.ToString();
+            this.label7.Text = sumaRes.ToString();
            
         }
 

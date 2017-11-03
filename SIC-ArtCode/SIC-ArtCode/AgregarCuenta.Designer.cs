@@ -34,11 +34,12 @@
             this.txtIdCuenta = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.grpTipo = new System.Windows.Forms.GroupBox();
-            this.rdbActivo = new System.Windows.Forms.RadioButton();
-            this.rdbPasivo = new System.Windows.Forms.RadioButton();
             this.rdbCapital = new System.Windows.Forms.RadioButton();
+            this.rdbPasivo = new System.Windows.Forms.RadioButton();
+            this.rdbActivo = new System.Windows.Forms.RadioButton();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.rdbResultado = new System.Windows.Forms.RadioButton();
             this.grpTipo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             this.txtIdCuenta.Location = new System.Drawing.Point(195, 43);
             this.txtIdCuenta.Name = "txtIdCuenta";
             this.txtIdCuenta.Size = new System.Drawing.Size(134, 20);
-            this.txtIdCuenta.TabIndex = 3;           
+            this.txtIdCuenta.TabIndex = 3;
             // 
             // btnAgregar
             // 
@@ -86,27 +87,26 @@
             // 
             // grpTipo
             // 
+            this.grpTipo.Controls.Add(this.rdbResultado);
             this.grpTipo.Controls.Add(this.rdbCapital);
             this.grpTipo.Controls.Add(this.rdbPasivo);
             this.grpTipo.Controls.Add(this.rdbActivo);
             this.grpTipo.Location = new System.Drawing.Point(56, 153);
             this.grpTipo.Name = "grpTipo";
-            this.grpTipo.Size = new System.Drawing.Size(200, 100);
+            this.grpTipo.Size = new System.Drawing.Size(200, 131);
             this.grpTipo.TabIndex = 5;
             this.grpTipo.TabStop = false;
             this.grpTipo.Text = "TipoCuenta";
             // 
-            // rdbActivo
+            // rdbCapital
             // 
-            this.rdbActivo.AutoSize = true;
-            this.rdbActivo.Checked = true;
-            this.rdbActivo.Location = new System.Drawing.Point(17, 20);
-            this.rdbActivo.Name = "rdbActivo";
-            this.rdbActivo.Size = new System.Drawing.Size(67, 17);
-            this.rdbActivo.TabIndex = 0;
-            this.rdbActivo.TabStop = true;
-            this.rdbActivo.Text = "1. Activo";
-            this.rdbActivo.UseVisualStyleBackColor = true;
+            this.rdbCapital.AutoSize = true;
+            this.rdbCapital.Location = new System.Drawing.Point(17, 82);
+            this.rdbCapital.Name = "rdbCapital";
+            this.rdbCapital.Size = new System.Drawing.Size(69, 17);
+            this.rdbCapital.TabIndex = 2;
+            this.rdbCapital.Text = "3. Capital";
+            this.rdbCapital.UseVisualStyleBackColor = true;
             // 
             // rdbPasivo
             // 
@@ -118,15 +118,17 @@
             this.rdbPasivo.Text = "2. Pasivo";
             this.rdbPasivo.UseVisualStyleBackColor = true;
             // 
-            // rdbCapital
+            // rdbActivo
             // 
-            this.rdbCapital.AutoSize = true;
-            this.rdbCapital.Location = new System.Drawing.Point(17, 82);
-            this.rdbCapital.Name = "rdbCapital";
-            this.rdbCapital.Size = new System.Drawing.Size(69, 17);
-            this.rdbCapital.TabIndex = 2;
-            this.rdbCapital.Text = "3. Capital";
-            this.rdbCapital.UseVisualStyleBackColor = true;
+            this.rdbActivo.AutoSize = true;
+            this.rdbActivo.Checked = true;
+            this.rdbActivo.Location = new System.Drawing.Point(17, 32);
+            this.rdbActivo.Name = "rdbActivo";
+            this.rdbActivo.Size = new System.Drawing.Size(67, 17);
+            this.rdbActivo.TabIndex = 0;
+            this.rdbActivo.TabStop = true;
+            this.rdbActivo.Text = "1. Activo";
+            this.rdbActivo.UseVisualStyleBackColor = true;
             // 
             // lblSaldo
             // 
@@ -143,6 +145,16 @@
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.Size = new System.Drawing.Size(100, 20);
             this.txtSaldo.TabIndex = 7;
+            // 
+            // rdbResultado
+            // 
+            this.rdbResultado.AutoSize = true;
+            this.rdbResultado.Location = new System.Drawing.Point(17, 105);
+            this.rdbResultado.Name = "rdbResultado";
+            this.rdbResultado.Size = new System.Drawing.Size(85, 17);
+            this.rdbResultado.TabIndex = 3;
+            this.rdbResultado.Text = "4. Resultado";
+            this.rdbResultado.UseVisualStyleBackColor = true;
             // 
             // AgregarCuenta
             // 
@@ -180,5 +192,6 @@
         private System.Windows.Forms.RadioButton rdbActivo;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.TextBox txtSaldo;
+        private System.Windows.Forms.RadioButton rdbResultado;
     }
 }
