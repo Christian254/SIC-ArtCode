@@ -43,5 +43,16 @@ namespace SIC_ArtCode
             Comprobacion estadoComprobacion = new Comprobacion();
             estadoComprobacion.ShowDialog();
         }
+
+        private void estadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void estadoDeResultadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Resultado resultado = new Resultado();
+            resultado.ShowDialog();                 
+        }
     }
 }

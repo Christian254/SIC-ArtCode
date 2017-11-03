@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace SIC_ArtCode
 {
@@ -40,6 +43,16 @@ namespace SIC_ArtCode
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {            
             txtIdCuentaRmv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            Document document = new Document();          
+            PdfWriter.GetInstance(document, new FileStream("reporte.pdf", FileMode.OpenOrCreate));
+            document.Open();
+            document.Add(new Paragraph("Probando PDF"));
+            document.Close();
+           
         }
     }
 }

@@ -32,9 +32,10 @@
             this.cuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.estadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeComprobaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.estadoDeResultadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +73,23 @@
             this.verCuentasToolStripMenuItem.Text = "Ver Cuentas";
             this.verCuentasToolStripMenuItem.Click += new System.EventHandler(this.verCuentasToolStripMenuItem_Click);
             // 
+            // estadosToolStripMenuItem
+            // 
+            this.estadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.estadoDeComprobaciónToolStripMenuItem,
+            this.estadoDeResultadoToolStripMenuItem});
+            this.estadosToolStripMenuItem.Name = "estadosToolStripMenuItem";
+            this.estadosToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.estadosToolStripMenuItem.Text = "Estados Financieros";
+            this.estadosToolStripMenuItem.Click += new System.EventHandler(this.estadosToolStripMenuItem_Click);
+            // 
+            // estadoDeComprobaciónToolStripMenuItem
+            // 
+            this.estadoDeComprobaciónToolStripMenuItem.Name = "estadoDeComprobaciónToolStripMenuItem";
+            this.estadoDeComprobaciónToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.estadoDeComprobaciónToolStripMenuItem.Text = "Estado de Comprobación";
+            this.estadoDeComprobaciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeComprobaciónToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -82,20 +100,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ARTCODE S.A";
             // 
-            // estadosToolStripMenuItem
+            // estadoDeResultadoToolStripMenuItem
             // 
-            this.estadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.estadoDeComprobaciónToolStripMenuItem});
-            this.estadosToolStripMenuItem.Name = "estadosToolStripMenuItem";
-            this.estadosToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
-            this.estadosToolStripMenuItem.Text = "Estados Financieros";
-            // 
-            // estadoDeComprobaciónToolStripMenuItem
-            // 
-            this.estadoDeComprobaciónToolStripMenuItem.Name = "estadoDeComprobaciónToolStripMenuItem";
-            this.estadoDeComprobaciónToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.estadoDeComprobaciónToolStripMenuItem.Text = "Estado de Comprobación";
-            this.estadoDeComprobaciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeComprobaciónToolStripMenuItem_Click);
+            this.estadoDeResultadoToolStripMenuItem.Name = "estadoDeResultadoToolStripMenuItem";
+            this.estadoDeResultadoToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.estadoDeResultadoToolStripMenuItem.Text = "Estado de Resultado";
+            this.estadoDeResultadoToolStripMenuItem.Click += new System.EventHandler(this.estadoDeResultadoToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -124,6 +134,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem estadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadoDeComprobaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadoDeResultadoToolStripMenuItem;
     }
 }
 
