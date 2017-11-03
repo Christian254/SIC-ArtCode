@@ -13,6 +13,7 @@ namespace SIC_ArtCode
 {
     public partial class Cuentas : Form
     {
+        Global nueva = new Global();
         public Cuentas()
         {
             InitializeComponent();
@@ -20,12 +21,8 @@ namespace SIC_ArtCode
 
         private void VerCuenta_Load(object sender, EventArgs e)
         {
-            MySqlCommand cm = new MySqlCommand("SELECT * FROM cuenta", BDComun.Conectar());
-            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
-            DataTable tabla = new DataTable();
-            datos.Fill(tabla);
-            dataGridView1.DataSource = tabla;
-            BDComun.Conectar().Close();
+            
+            nueva.ActualizarGrid(dataGridView1);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -35,7 +32,9 @@ namespace SIC_ArtCode
             cm.Parameters.AddWithValue("?idcuenta", int.Parse(txtIdCuentaRmv.Text));
             cm.ExecuteNonQuery();
             MessageBox.Show("ELimando");
-            BDComun.Conectar().Close();
+            BDComun.Conectar().Close();            
+            nueva.ActualizarGrid(dataGridView1);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
