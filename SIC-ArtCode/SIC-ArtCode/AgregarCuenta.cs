@@ -20,18 +20,35 @@ namespace SIC_ArtCode
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            int idCuenta;       
+            int idCuenta;
+            double saldo;
             string nmbCuenta = txtNmbCuenta.Text;
             string sentencia;
             idCuenta = int.Parse(txtIdCuenta.Text);
-            sentencia = @"insert into cuenta(idcuenta, nombre) values(?idcuenta, ?nombre)";
+            saldo = double.Parse(txtSaldo.Text);
+            sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo) values(?idcuenta, ?nombre, ?tipo, ?saldo)";
             MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
             comando.Parameters.AddWithValue("?idcuenta", idCuenta);
             comando.Parameters.AddWithValue("?nombre", nmbCuenta);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("La cuenta: "+nmbCuenta+" ha sido ingresada con exito");
+            if (rdbActivo.Checked)
+            {
+                comando.Parameters.AddWithValue("?tipo", "activo");
+            }
+            if (rdbPasivo.Checked)
+            {
+                comando.Parameters.AddWithValue("?tipo", "pasivo");          
+            }
+            if (rdbCapital.Checked)
+            {
+                comando.Parameters.AddWithValue("?tipo", "capital");
+            }
+            comando.Parameters.AddWithValue("?saldo",saldo);
+            comando.ExecuteNonQuery();         
+            MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");                                   
             BDComun.Conectar().Close();
-
+            txtIdCuenta.Clear();
+            txtNmbCuenta.Clear();
+            txtSaldo.Clear();           
         }
     }
 }

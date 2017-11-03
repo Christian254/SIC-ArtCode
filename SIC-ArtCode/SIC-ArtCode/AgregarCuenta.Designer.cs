@@ -33,6 +33,13 @@
             this.lblIdCuenta = new System.Windows.Forms.Label();
             this.txtIdCuenta = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.grpTipo = new System.Windows.Forms.GroupBox();
+            this.rdbActivo = new System.Windows.Forms.RadioButton();
+            this.rdbPasivo = new System.Windows.Forms.RadioButton();
+            this.rdbCapital = new System.Windows.Forms.RadioButton();
+            this.lblSaldo = new System.Windows.Forms.Label();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.grpTipo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNmbCuenta
@@ -65,11 +72,11 @@
             this.txtIdCuenta.Location = new System.Drawing.Point(195, 43);
             this.txtIdCuenta.Name = "txtIdCuenta";
             this.txtIdCuenta.Size = new System.Drawing.Size(134, 20);
-            this.txtIdCuenta.TabIndex = 3;
+            this.txtIdCuenta.TabIndex = 3;           
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(167, 182);
+            this.btnAgregar.Location = new System.Drawing.Point(162, 304);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(118, 23);
             this.btnAgregar.TabIndex = 4;
@@ -77,11 +84,74 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // grpTipo
+            // 
+            this.grpTipo.Controls.Add(this.rdbCapital);
+            this.grpTipo.Controls.Add(this.rdbPasivo);
+            this.grpTipo.Controls.Add(this.rdbActivo);
+            this.grpTipo.Location = new System.Drawing.Point(56, 153);
+            this.grpTipo.Name = "grpTipo";
+            this.grpTipo.Size = new System.Drawing.Size(200, 100);
+            this.grpTipo.TabIndex = 5;
+            this.grpTipo.TabStop = false;
+            this.grpTipo.Text = "TipoCuenta";
+            // 
+            // rdbActivo
+            // 
+            this.rdbActivo.AutoSize = true;
+            this.rdbActivo.Checked = true;
+            this.rdbActivo.Location = new System.Drawing.Point(17, 20);
+            this.rdbActivo.Name = "rdbActivo";
+            this.rdbActivo.Size = new System.Drawing.Size(67, 17);
+            this.rdbActivo.TabIndex = 0;
+            this.rdbActivo.TabStop = true;
+            this.rdbActivo.Text = "1. Activo";
+            this.rdbActivo.UseVisualStyleBackColor = true;
+            // 
+            // rdbPasivo
+            // 
+            this.rdbPasivo.AutoSize = true;
+            this.rdbPasivo.Location = new System.Drawing.Point(17, 55);
+            this.rdbPasivo.Name = "rdbPasivo";
+            this.rdbPasivo.Size = new System.Drawing.Size(69, 17);
+            this.rdbPasivo.TabIndex = 1;
+            this.rdbPasivo.Text = "2. Pasivo";
+            this.rdbPasivo.UseVisualStyleBackColor = true;
+            // 
+            // rdbCapital
+            // 
+            this.rdbCapital.AutoSize = true;
+            this.rdbCapital.Location = new System.Drawing.Point(17, 82);
+            this.rdbCapital.Name = "rdbCapital";
+            this.rdbCapital.Size = new System.Drawing.Size(69, 17);
+            this.rdbCapital.TabIndex = 2;
+            this.rdbCapital.Text = "3. Capital";
+            this.rdbCapital.UseVisualStyleBackColor = true;
+            // 
+            // lblSaldo
+            // 
+            this.lblSaldo.AutoSize = true;
+            this.lblSaldo.Location = new System.Drawing.Point(293, 153);
+            this.lblSaldo.Name = "lblSaldo";
+            this.lblSaldo.Size = new System.Drawing.Size(34, 13);
+            this.lblSaldo.TabIndex = 6;
+            this.lblSaldo.Text = "Saldo";
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.Location = new System.Drawing.Point(296, 185);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.Size = new System.Drawing.Size(100, 20);
+            this.txtSaldo.TabIndex = 7;
+            // 
             // AgregarCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 262);
+            this.ClientSize = new System.Drawing.Size(435, 388);
+            this.Controls.Add(this.txtSaldo);
+            this.Controls.Add(this.lblSaldo);
+            this.Controls.Add(this.grpTipo);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtIdCuenta);
             this.Controls.Add(this.lblIdCuenta);
@@ -90,6 +160,8 @@
             this.MaximizeBox = false;
             this.Name = "AgregarCuenta";
             this.Text = "Agregar Cuenta";
+            this.grpTipo.ResumeLayout(false);
+            this.grpTipo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +174,11 @@
         private System.Windows.Forms.Label lblIdCuenta;
         private System.Windows.Forms.TextBox txtIdCuenta;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.GroupBox grpTipo;
+        private System.Windows.Forms.RadioButton rdbCapital;
+        private System.Windows.Forms.RadioButton rdbPasivo;
+        private System.Windows.Forms.RadioButton rdbActivo;
+        private System.Windows.Forms.Label lblSaldo;
+        private System.Windows.Forms.TextBox txtSaldo;
     }
 }
