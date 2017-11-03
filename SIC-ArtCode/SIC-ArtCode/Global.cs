@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace SIC_ArtCode
 {
@@ -32,7 +35,34 @@ namespace SIC_ArtCode
             }            
             return sumatoria;
         }
-
+        public void CrearPDF()
+        {
+            Document doc = new Document(PageSize.LETTER);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:";
+            saveFileDialog1.Title = "Guardar Reporte";
+            saveFileDialog1.DefaultExt = "pdf";
+            saveFileDialog1.Filter = "pdf Files (*.pdf)|*.pdf| All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            string filename = "";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filename = saveFileDialog1.FileName;
+            }
+            if (filename.Trim() != "")
+            {
+                FileStream file = new FileStream(filename,
+                FileMode.OpenOrCreate,
+                FileAccess.ReadWrite,
+                FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                doc.Open();
+                doc.Add(new Paragraph("ArtCode S.A"));
+                doc.Close();
+            }
+        }
 
     }
 }
