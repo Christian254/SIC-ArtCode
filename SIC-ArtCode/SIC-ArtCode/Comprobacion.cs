@@ -25,17 +25,18 @@ namespace SIC_ArtCode
             double sumaPas = nuevo.sumatoriaCuentas("pasivo");
             double sumaCap = nuevo.sumatoriaCuentas("capital");
             recursos = nuevo.sumatoriaCuentas("activo");
-            participaciones = nuevo.sumatoriaCuentas("pasivo") + nuevo.sumatoriaCuentas("capital")+1;
+            participaciones = nuevo.sumatoriaCuentas("pasivo") + nuevo.sumatoriaCuentas("capital");
             this.label1.Text=sumaAct.ToString();
             this.label2.Text = sumaPas.ToString();
             this.label3.Text = sumaCap.ToString();
-            this.label4.Text = recursos.ToString();
-            this.label5.Text = participaciones.ToString();
+           
         }
 
         private void btnComprobar_Click(object sender, EventArgs e)
         {
-
+            this.label4.Text = recursos.ToString();
+            this.label5.Text = participaciones.ToString();
+            this.label6.Text = "=";
             if (recursos == participaciones)
                 MessageBox.Show("Recursos igual a Participaciones", "Verificación", MessageBoxButtons.OK,MessageBoxIcon.Information);
             else
