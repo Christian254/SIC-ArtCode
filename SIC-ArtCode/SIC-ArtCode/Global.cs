@@ -35,8 +35,9 @@ namespace SIC_ArtCode
             }            
             return sumatoria;
         }
-        public void CrearPDF()
+        public Document CrearPDF()
         {
+            Font fuente = new Font(Font.FontFamily.TIMES_ROMAN ,16, Font.ITALIC,BaseColor.BLACK);
             Document doc = new Document(PageSize.LETTER);
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = @"C:";
@@ -56,12 +57,42 @@ namespace SIC_ArtCode
                 FileMode.OpenOrCreate,
                 FileAccess.ReadWrite,
                 FileShare.ReadWrite);
-                PdfWriter.GetInstance(doc, file);
+                PdfWriter.GetInstance(doc, file);                
                 doc.Open();
-                doc.Open();
-                doc.Add(new Paragraph("ArtCode S.A"));
-                doc.Close();
+                doc.Add(new Paragraph("ArtCode S.A", fuente));               
+                
             }
+            return doc;
+        }
+        public void CatalogoCuentasPDF(Document documento, DataGridView grid)
+        {
+            PdfPTable table = new PdfPTable(grid.ColumnCount);
+            Font fuente = new Font(Font.FontFamily.HELVETICA, 14,Font.BOLD);
+            Paragraph paragraph = new Paragraph("Catalogo de Cuentas",fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;            
+            documento.Add(paragraph);
+            table.DefaultCell.Padding = 3;            
+            int i,j;
+            for(i=0;i<grid.ColumnCount;i++)
+            {
+                table.AddCell(grid.Columns[i].HeaderText);
+            }
+            for(i=0;i<grid.RowCount;i++)
+            {
+                
+                for(j=0; j<grid.ColumnCount; j++)
+                {
+                    if (grid[j, i].Value != null)
+                    {                        
+                        table.AddCell(new Phrase(grid[j, i].Value.ToString()));
+                    }
+                }
+                table.CompleteRow();
+            }
+            documento.Add(new Chunk(""));
+            documento.Add(new Chunk(""));
+            documento.Add(table);
+            documento.Close();
         }
 
     }
