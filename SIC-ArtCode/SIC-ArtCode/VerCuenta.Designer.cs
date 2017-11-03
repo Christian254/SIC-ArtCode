@@ -71,7 +71,7 @@
             this.Controls.Add(this.dataGridView1);
             this.MaximizeBox = false;
             this.Name = "Cuentas";
-            this.Text = "VerCuenta";
+            this.Text = "Cuenta";
             this.Load += new System.EventHandler(this.VerCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

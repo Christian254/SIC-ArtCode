@@ -33,13 +33,16 @@
             this.agregarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.estadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadoDeComprobaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cuentaToolStripMenuItem});
+            this.cuentaToolStripMenuItem,
+            this.estadosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(488, 24);
@@ -79,6 +82,21 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ARTCODE S.A";
             // 
+            // estadosToolStripMenuItem
+            // 
+            this.estadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.estadoDeComprobaciónToolStripMenuItem});
+            this.estadosToolStripMenuItem.Name = "estadosToolStripMenuItem";
+            this.estadosToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.estadosToolStripMenuItem.Text = "Estados Financieros";
+            // 
+            // estadoDeComprobaciónToolStripMenuItem
+            // 
+            this.estadoDeComprobaciónToolStripMenuItem.Name = "estadoDeComprobaciónToolStripMenuItem";
+            this.estadoDeComprobaciónToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.estadoDeComprobaciónToolStripMenuItem.Text = "Estado de Comprobación";
+            this.estadoDeComprobaciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeComprobaciónToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +122,8 @@
         private System.Windows.Forms.ToolStripMenuItem agregarCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verCuentasToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem estadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadoDeComprobaciónToolStripMenuItem;
     }
 }
 

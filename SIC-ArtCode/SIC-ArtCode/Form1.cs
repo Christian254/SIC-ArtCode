@@ -37,5 +37,11 @@ namespace SIC_ArtCode
             Cuentas listaCuenta = new Cuentas();
             listaCuenta.ShowDialog();
         }
+
+        private void estadoDeComprobaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comprobacion estadoComprobacion = new Comprobacion();
+            estadoComprobacion.ShowDialog();
+        }
     }
 }

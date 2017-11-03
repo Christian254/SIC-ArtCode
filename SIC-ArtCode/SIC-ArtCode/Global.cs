@@ -20,5 +20,19 @@ namespace SIC_ArtCode
             grid.DataSource = tabla;
             BDComun.Conectar().Close();
         }
+        public double sumatoriaCuentas(string tipo)
+        {            
+            double sumatoria = 0;
+            MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?tipo", tipo);
+            MySqlDataReader reader = cm.ExecuteReader();
+            while (reader.Read())
+            {
+                sumatoria += reader.GetDouble("saldo");                
+            }            
+            return sumatoria;
+        }
+
+
     }
 }
