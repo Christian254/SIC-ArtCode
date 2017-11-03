@@ -34,7 +34,7 @@ namespace SIC_ArtCode
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VerCuenta listaCuenta = new VerCuenta();
+            Cuentas listaCuenta = new Cuentas();
             listaCuenta.ShowDialog();
         }
     }

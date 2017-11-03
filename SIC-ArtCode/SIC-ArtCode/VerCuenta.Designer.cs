@@ -1,6 +1,6 @@
 ﻿namespace SIC_ArtCode
 {
-    partial class VerCuenta
+    partial class Cuentas
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,60 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtIdCuentaRmv = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(88, 42);
+            this.dataGridView1.Location = new System.Drawing.Point(78, 25);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(431, 150);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // VerCuenta
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(297, 207);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(138, 23);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar Cuenta";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtIdCuentaRmv
+            // 
+            this.txtIdCuentaRmv.Location = new System.Drawing.Point(146, 210);
+            this.txtIdCuentaRmv.Name = "txtIdCuentaRmv";
+            this.txtIdCuentaRmv.Size = new System.Drawing.Size(100, 20);
+            this.txtIdCuentaRmv.TabIndex = 3;
+            // 
+            // Cuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 262);
+            this.Controls.Add(this.txtIdCuentaRmv);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "VerCuenta";
+            this.MaximizeBox = false;
+            this.Name = "Cuentas";
             this.Text = "VerCuenta";
             this.Load += new System.EventHandler(this.VerCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.TextBox txtIdCuentaRmv;
     }
 }
