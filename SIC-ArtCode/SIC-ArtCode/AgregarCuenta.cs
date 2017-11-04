@@ -53,6 +53,7 @@ namespace SIC_ArtCode
                 {
                     comando.Parameters.AddWithValue("?tipo", "resultado");
                 }
+
                 comando.Parameters.AddWithValue("?saldo", saldo);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
