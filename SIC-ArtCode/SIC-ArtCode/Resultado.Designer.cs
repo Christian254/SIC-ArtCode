@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnResultado = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnResultado
+            // 
+            this.btnResultado.Location = new System.Drawing.Point(147, 121);
+            this.btnResultado.Name = "btnResultado";
+            this.btnResultado.Size = new System.Drawing.Size(158, 23);
+            this.btnResultado.TabIndex = 0;
+            this.btnResultado.Text = "Estado Resultado";
+            this.btnResultado.UseVisualStyleBackColor = true;
+            this.btnResultado.Click += new System.EventHandler(this.btnResultado_Click);
             // 
             // Resultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 262);
+            this.Controls.Add(this.btnResultado);
             this.MaximizeBox = false;
             this.Name = "Resultado";
             this.Text = "Estado Resultado";
@@ -43,5 +55,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnResultado;
     }
 }
