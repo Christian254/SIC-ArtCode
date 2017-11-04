@@ -69,5 +69,11 @@ namespace SIC_ArtCode
         {
 
         }
+
+        private void AgregarCuenta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
+    //Prueba
 }
