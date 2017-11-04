@@ -41,6 +41,7 @@ namespace SIC_ArtCode
                 {
                     comando.Parameters.AddWithValue("?tipo", "activo");
                 }
+
                 if (rdbPasivo.Checked)
                 {
                     comando.Parameters.AddWithValue("?tipo", "pasivo");
