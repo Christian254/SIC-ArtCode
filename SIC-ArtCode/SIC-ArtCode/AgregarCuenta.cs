@@ -24,35 +24,48 @@ namespace SIC_ArtCode
             double saldo;
             string nmbCuenta = txtNmbCuenta.Text;
             string sentencia;
-            idCuenta = int.Parse(txtIdCuenta.Text);
-            saldo = double.Parse(txtSaldo.Text);
-            sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo) values(?idcuenta, ?nombre, ?tipo, ?saldo)";
-            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
-            comando.Parameters.AddWithValue("?idcuenta", idCuenta);
-            comando.Parameters.AddWithValue("?nombre", nmbCuenta);
-            if (rdbActivo.Checked)
+
+            if (string.IsNullOrWhiteSpace(txtIdCuenta.Text) || string.IsNullOrWhiteSpace(txtNmbCuenta.Text) || string.IsNullOrWhiteSpace(txtSaldo.Text))
             {
-                comando.Parameters.AddWithValue("?tipo", "activo");
+                MessageBox.Show("Todos los campos deben estar llenos para agregar una cuenta");
             }
-            if (rdbPasivo.Checked)
+            else
             {
-                comando.Parameters.AddWithValue("?tipo", "pasivo");          
+                idCuenta = int.Parse(txtIdCuenta.Text);
+                saldo = double.Parse(txtSaldo.Text);
+                sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo) values(?idcuenta, ?nombre, ?tipo, ?saldo)";
+                MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+                comando.Parameters.AddWithValue("?idcuenta", idCuenta);
+                comando.Parameters.AddWithValue("?nombre", nmbCuenta);
+                if (rdbActivo.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "activo");
+                }
+                if (rdbPasivo.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "pasivo");
+                }
+                if (rdbCapital.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "capital");
+                }
+                if (rdbResultado.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "resultado");
+                }
+                comando.Parameters.AddWithValue("?saldo", saldo);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
+                BDComun.Conectar().Close();
+                txtIdCuenta.Clear();
+                txtNmbCuenta.Clear();
+                txtSaldo.Clear();
             }
-            if (rdbCapital.Checked)
-            {
-                comando.Parameters.AddWithValue("?tipo", "capital");
-            }
-            if (rdbResultado.Checked)
-            {
-                comando.Parameters.AddWithValue("?tipo", "resultado");
-            }
-            comando.Parameters.AddWithValue("?saldo",saldo);
-            comando.ExecuteNonQuery();         
-            MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");                                   
-            BDComun.Conectar().Close();
-            txtIdCuenta.Clear();
-            txtNmbCuenta.Clear();
-            txtSaldo.Clear();           
+        }
+
+        private void txtSaldo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

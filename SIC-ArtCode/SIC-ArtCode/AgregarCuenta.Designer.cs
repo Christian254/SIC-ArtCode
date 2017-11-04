@@ -34,12 +34,12 @@
             this.txtIdCuenta = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.grpTipo = new System.Windows.Forms.GroupBox();
+            this.rdbResultado = new System.Windows.Forms.RadioButton();
             this.rdbCapital = new System.Windows.Forms.RadioButton();
             this.rdbPasivo = new System.Windows.Forms.RadioButton();
             this.rdbActivo = new System.Windows.Forms.RadioButton();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
-            this.rdbResultado = new System.Windows.Forms.RadioButton();
             this.grpTipo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,16 @@
             this.grpTipo.TabStop = false;
             this.grpTipo.Text = "TipoCuenta";
             // 
+            // rdbResultado
+            // 
+            this.rdbResultado.AutoSize = true;
+            this.rdbResultado.Location = new System.Drawing.Point(17, 105);
+            this.rdbResultado.Name = "rdbResultado";
+            this.rdbResultado.Size = new System.Drawing.Size(85, 17);
+            this.rdbResultado.TabIndex = 3;
+            this.rdbResultado.Text = "4. Resultado";
+            this.rdbResultado.UseVisualStyleBackColor = true;
+            // 
             // rdbCapital
             // 
             this.rdbCapital.AutoSize = true;
@@ -145,16 +155,7 @@
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.Size = new System.Drawing.Size(100, 20);
             this.txtSaldo.TabIndex = 7;
-            // 
-            // rdbResultado
-            // 
-            this.rdbResultado.AutoSize = true;
-            this.rdbResultado.Location = new System.Drawing.Point(17, 105);
-            this.rdbResultado.Name = "rdbResultado";
-            this.rdbResultado.Size = new System.Drawing.Size(85, 17);
-            this.rdbResultado.TabIndex = 3;
-            this.rdbResultado.Text = "4. Resultado";
-            this.rdbResultado.UseVisualStyleBackColor = true;
+            this.txtSaldo.TextChanged += new System.EventHandler(this.txtSaldo_TextChanged);
             // 
             // AgregarCuenta
             // 
