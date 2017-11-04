@@ -56,6 +56,12 @@
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </Compile>
     <Compile Include="BDComun.cs" />
+    <Compile Include="Capital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capital.Designer.cs">
+      <DependentUpon>Capital.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprobacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="AgregarCuenta.resx">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capital.resx">
+      <DependentUpon>Capital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprobacion.resx">
       <DependentUpon>Comprobacion.cs</DependentUpon>

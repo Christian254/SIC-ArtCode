@@ -54,5 +54,11 @@ namespace SIC_ArtCode
             Resultado resultado = new Resultado();
             resultado.ShowDialog();                 
         }
+
+        private void estadoDeCapitalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capital capital = new Capital();
+            capital.ShowDialog();
+        }
     }
 }

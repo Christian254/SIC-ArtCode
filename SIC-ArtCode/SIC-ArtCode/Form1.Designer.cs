@@ -34,8 +34,9 @@
             this.verCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeComprobaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.estadoDeResultadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.estadoDeCapitalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +78,8 @@
             // 
             this.estadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estadoDeComprobaciónToolStripMenuItem,
-            this.estadoDeResultadoToolStripMenuItem});
+            this.estadoDeResultadoToolStripMenuItem,
+            this.estadoDeCapitalToolStripMenuItem});
             this.estadosToolStripMenuItem.Name = "estadosToolStripMenuItem";
             this.estadosToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.estadosToolStripMenuItem.Text = "Estados Financieros";
@@ -90,6 +92,13 @@
             this.estadoDeComprobaciónToolStripMenuItem.Text = "Estado de Comprobación";
             this.estadoDeComprobaciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeComprobaciónToolStripMenuItem_Click);
             // 
+            // estadoDeResultadoToolStripMenuItem
+            // 
+            this.estadoDeResultadoToolStripMenuItem.Name = "estadoDeResultadoToolStripMenuItem";
+            this.estadoDeResultadoToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.estadoDeResultadoToolStripMenuItem.Text = "Estado de Resultado";
+            this.estadoDeResultadoToolStripMenuItem.Click += new System.EventHandler(this.estadoDeResultadoToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -100,12 +109,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ARTCODE S.A";
             // 
-            // estadoDeResultadoToolStripMenuItem
+            // estadoDeCapitalToolStripMenuItem
             // 
-            this.estadoDeResultadoToolStripMenuItem.Name = "estadoDeResultadoToolStripMenuItem";
-            this.estadoDeResultadoToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.estadoDeResultadoToolStripMenuItem.Text = "Estado de Resultado";
-            this.estadoDeResultadoToolStripMenuItem.Click += new System.EventHandler(this.estadoDeResultadoToolStripMenuItem_Click);
+            this.estadoDeCapitalToolStripMenuItem.Name = "estadoDeCapitalToolStripMenuItem";
+            this.estadoDeCapitalToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.estadoDeCapitalToolStripMenuItem.Text = "Estado de Capital";
+            this.estadoDeCapitalToolStripMenuItem.Click += new System.EventHandler(this.estadoDeCapitalToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -135,6 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem estadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadoDeComprobaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadoDeResultadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadoDeCapitalToolStripMenuItem;
     }
 }
 
