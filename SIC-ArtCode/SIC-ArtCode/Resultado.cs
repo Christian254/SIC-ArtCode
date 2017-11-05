@@ -24,7 +24,7 @@ namespace SIC_ArtCode
         {
             Global global = new Global();
             Document document = new Document();
-            document = global.CrearPDF();
+            document = global.CrearPDF("");
             global.EstadoResultado(document);
         }
     }

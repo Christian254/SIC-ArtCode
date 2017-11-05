@@ -60,5 +60,11 @@ namespace SIC_ArtCode
             Capital capital = new Capital();
             capital.ShowDialog();
         }
+
+        private void balanceGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            General general = new General();
+            general.ShowDialog();
+        }
     }
 }

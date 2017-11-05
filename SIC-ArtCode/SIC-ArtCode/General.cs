@@ -8,25 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text;
-using iTextSharp.text.pdf;
 
 namespace SIC_ArtCode
 {
-    public partial class Capital : Form
+    public partial class General : Form
     {
-        public Capital()
+        public General()
         {
             InitializeComponent();
         }
 
-        private void btnCapPDF_Click(object sender, EventArgs e)
+        private void btnGeneral_Click(object sender, EventArgs e)
         {
             Global global = new Global();
             Document document = new Document();
-            document = global.CrearPDF("");
-            double utilidad = global.sumatoria;
-            global.EstadoCapitalPDF(document);
-
+            document=global.CrearPDF("general");
+            global.BalanceGeneralPDF(document);
         }
     }
 }

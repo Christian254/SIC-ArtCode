@@ -48,7 +48,7 @@ namespace SIC_ArtCode
         private void btnPDF_Click(object sender, EventArgs e)
         {
             Document document = new Document();
-            document = nueva.CrearPDF();
+            document = nueva.CrearPDF("general");
             nueva.CatalogoCuentasPDF(document, dataGridView1);
 
         }

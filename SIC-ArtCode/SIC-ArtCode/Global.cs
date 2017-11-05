@@ -9,6 +9,9 @@ using MySql.Data.MySqlClient;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.ComponentModel;
+using System.Diagnostics;
+
 
 namespace SIC_ArtCode
 {
@@ -38,10 +41,20 @@ namespace SIC_ArtCode
             }            
             return sumatoria;
         }
-        public Document CrearPDF()
+
+        public Document CrearPDF(string estado)
         {
+            Rectangle pageSize;
+            if(String.Compare(estado,"general") !=0) //Esta parte permite que si se genera un Balance General se cree un PDF en forma horizontal
+            {
+                pageSize = PageSize.LETTER;                
+            }
+            else
+            {
+                pageSize = PageSize.A4.Rotate();
+            }
             Font fuente = new Font(Font.FontFamily.TIMES_ROMAN ,16, Font.ITALIC,BaseColor.BLACK);
-            Document doc = new Document(PageSize.LETTER);
+            Document doc = new Document(pageSize);             
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = @"C:";
             saveFileDialog1.Title = "Guardar Reporte";
@@ -68,7 +81,7 @@ namespace SIC_ArtCode
             return doc;
         }
         public void CatalogoCuentasPDF(Document documento, DataGridView grid)
-        {
+        {            
             PdfPTable table = new PdfPTable(grid.ColumnCount);            
             Paragraph paragraph = new Paragraph("Catalogo de Cuentas",fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;            
@@ -95,6 +108,7 @@ namespace SIC_ArtCode
             documento.Add(new Chunk(""));
             documento.Add(table);
             documento.Close();
+            
         }
         public void EstadoResultado(Document document)
         {
@@ -186,7 +200,7 @@ namespace SIC_ArtCode
                     document.Add(ing);
                     document.Add(new Chunk(" "));
                 }
-            }
+            }            
             BDComun.Conectar().Close();
             MySqlCommand cm1 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
             cm1.Parameters.AddWithValue("?tipo", "capital");
@@ -218,6 +232,14 @@ namespace SIC_ArtCode
             document.Add(suma);
             document.Close();
             BDComun.Conectar().Close();
+        }
+
+        public void BalanceGeneralPDF(Document document)
+        {
+            Paragraph paragraph = new Paragraph("Balance General", fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;
+            document.Add(paragraph);
+            document.Close();
         }
 
     }
