@@ -68,6 +68,10 @@ namespace SIC_ArtCode
         private void txtSaldo_TextChanged(object sender, EventArgs e)
         {
 
+
+
+
+
         }
 
         private void AgregarCuenta_Load(object sender, EventArgs e)
