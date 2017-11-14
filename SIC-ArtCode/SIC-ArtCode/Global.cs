@@ -239,7 +239,32 @@ namespace SIC_ArtCode
             Paragraph paragraph = new Paragraph("Balance General", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraph);
+            MySqlCommand cm = new MySqlCommand("Select * from where tipo=?tipo", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?tipo", "activo");
+            MySqlDataReader reader = cm.ExecuteReader();
+            string activos = "Activos";
+            string nombre = "", saldo = "";
+            Paragraph actv = new Paragraph(activos, fuente);
+            actv.Alignment = Element.ALIGN_LEFT;
+            document.Add(actv);
+            while (reader.Read())
+            {
+                if (reader.GetDouble("saldo") > 0)
+                {
+                    document.Add(new Chunk(" "));
+                    nombre = reader.GetString("nombre");
+                    saldo = reader.GetString("saldo");
+                    Paragraph ing = new Paragraph(saldo);
+                    Paragraph nmb = new Paragraph(nombre);
+                    ing.Alignment = Element.ALIGN_CENTER;
+                    nmb.Alignment = Element.ALIGN_LEFT;
+                    document.Add(nmb);
+                    document.Add(ing);
+                    document.Add(new Chunk(" "));
+                }
+            }
             document.Close();
+            BDComun.Conectar().Close();
         }
 
     }
