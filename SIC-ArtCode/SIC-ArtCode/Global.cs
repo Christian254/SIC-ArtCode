@@ -239,7 +239,30 @@ namespace SIC_ArtCode
             Paragraph paragraph = new Paragraph("Balance General", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraph);
+            MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?tipo", "activo"); //queres que sea de tipo activo
+            MySqlDataReader reader = cm.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
+            string activos = "Activos";
+            string nombre = "", saldo = "";
+            Paragraph act = new Paragraph(activos, fuente);
+            document.Add(act);
+            while(reader.Read())
+            {
+                if(String.Compare(reader.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
+                {                   
+                    nombre = reader.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                    saldo = reader.GetString("saldo");
+                    Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
+                    Paragraph sal = new Paragraph(saldo);
+                    nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
+                    sal.Alignment = Element.ALIGN_CENTER;                    
+                    document.Add(nom);
+                    document.Add(sal);
+                    document.Add(new Chunk(" "));
+                }
+            }
             document.Close();
+            BDComun.Conectar().Close();
         }
 
     }
