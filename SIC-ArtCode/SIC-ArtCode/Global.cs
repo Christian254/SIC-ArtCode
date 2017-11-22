@@ -29,6 +29,15 @@ namespace SIC_ArtCode
             grid.DataSource = tabla;
             BDComun.Conectar().Close();
         }
+        public void ActualizarEmpleados(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM empleado", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
         public double sumatoriaCuentas(string tipo)
         {            
             double sumatoria = 0;
@@ -263,6 +272,46 @@ namespace SIC_ArtCode
             }
             document.Close();
             BDComun.Conectar().Close();
+        }
+
+        public void PlanillaPDF(DataGridView grid)
+        {
+            PdfPTable pdfTable = new PdfPTable(grid.ColumnCount);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 30;
+            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.BorderWidth = 1;
+
+            foreach(DataGridViewColumn column in grid.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                pdfTable.AddCell(cell);
+            }
+
+            foreach(DataGridViewRow row in grid.Rows)
+            {
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    pdfTable.AddCell(cell.Value.ToString());
+                }
+            }
+
+            string folderPath = "C:\\PDFs\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A4);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+                
+            }
         }
 
     }

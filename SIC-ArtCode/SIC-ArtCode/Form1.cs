@@ -66,5 +66,22 @@ namespace SIC_ArtCode
             General general = new General();
             general.ShowDialog();
         }
+
+        private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void agregarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarEmpleado nuevoEmpleado = new AgregarEmpleado();
+            nuevoEmpleado.ShowDialog();
+        }
+
+        private void verPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerPlanilla planilla = new VerPlanilla();
+            planilla.ShowDialog();
+        }
     }
 }
