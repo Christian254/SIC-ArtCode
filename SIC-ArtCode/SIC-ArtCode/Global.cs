@@ -274,44 +274,35 @@ namespace SIC_ArtCode
             BDComun.Conectar().Close();
         }
 
-        public void PlanillaPDF(DataGridView grid)
+        public void PlanillaPDF(Document documento, DataGridView grid)
         {
-            PdfPTable pdfTable = new PdfPTable(grid.ColumnCount);
-            pdfTable.DefaultCell.Padding = 3;
-            pdfTable.WidthPercentage = 30;
-            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdfTable.DefaultCell.BorderWidth = 1;
-
-            foreach(DataGridViewColumn column in grid.Columns)
+            PdfPTable table = new PdfPTable(grid.ColumnCount);
+            Paragraph paragraph = new Paragraph("Planilla", fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;
+            documento.Add(paragraph);
+            table.DefaultCell.Padding = 3;
+            int i, j;
+            for (i = 0; i < grid.ColumnCount; i++)
             {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdfTable.AddCell(cell);
+                table.AddCell(grid.Columns[i].HeaderText);
             }
-
-            foreach(DataGridViewRow row in grid.Rows)
+            for (i = 0; i < grid.RowCount; i++)
             {
-                foreach(DataGridViewCell cell in row.Cells)
+
+                for (j = 0; j < grid.ColumnCount; j++)
                 {
-                    pdfTable.AddCell(cell.Value.ToString());
+                    if (grid[j, i].Value != null)
+                    {
+                        table.AddCell(new Phrase(grid[j, i].Value.ToString()));
+                    }
                 }
+                table.CompleteRow();
             }
+            documento.Add(new Chunk(""));
+            documento.Add(new Chunk(""));
+            documento.Add(table);
+            documento.Close();
 
-            string folderPath = "C:\\PDFs\\";
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-            using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
-            {
-                Document pdfDoc = new Document(PageSize.A4);
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
-                
-            }
         }
 
     }

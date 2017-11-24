@@ -12,6 +12,9 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 
+using System.Diagnostics;  
+
+
 namespace SIC_ArtCode
 {
     public partial class VerPlanilla : Form
@@ -29,7 +32,9 @@ namespace SIC_ArtCode
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            nueva.PlanillaPDF(dataGridView1);
+            Document document = new Document();
+            document = nueva.CrearPDF("general");
+            nueva.PlanillaPDF(document, dataGridView1);
         }
     }
 }
