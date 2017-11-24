@@ -162,6 +162,12 @@ namespace SIC_ArtCode
                 aguinaldo = (salario / 30) * 18;
             }
             txtAguinaldo.Text = aguinaldo.ToString();
+
+            DateTime d1 = DateTime.Now;
+            DateTime d2 = new DateTime(DateTime.Now.Year, 12, 31);
+
+            TimeSpan ts = d1 - d2;
+            float n = float.Parse(ts.Minutes.ToString()); //Minutos transcurridos de la fecha hasta el 31 de dicimbre
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

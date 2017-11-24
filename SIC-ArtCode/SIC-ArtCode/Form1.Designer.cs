@@ -42,6 +42,7 @@
             this.editarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,18 +158,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(176, 128);
+            this.label1.Location = new System.Drawing.Point(202, 107);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 36);
             this.label1.TabIndex = 4;
             this.label1.Text = "ARTCODE S.A";
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(299, 200);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(46, 17);
+            this.lblFecha.TabIndex = 5;
+            this.lblFecha.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 366);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -199,6 +210,7 @@
         private System.Windows.Forms.ToolStripMenuItem agregarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verPlanillaToolStripMenuItem;
+        private System.Windows.Forms.Label lblFecha;
     }
 }
 

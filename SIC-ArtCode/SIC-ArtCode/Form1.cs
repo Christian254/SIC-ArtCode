@@ -29,7 +29,7 @@ namespace SIC_ArtCode
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)
