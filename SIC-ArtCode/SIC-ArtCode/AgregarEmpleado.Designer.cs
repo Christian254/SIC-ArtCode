@@ -46,7 +46,9 @@
             this.aguinaldoBox = new System.Windows.Forms.ComboBox();
             this.addEmpleado = new System.Windows.Forms.Button();
             this.txtAguinaldo = new System.Windows.Forms.TextBox();
-            this.rbdInsaforp = new System.Windows.Forms.RadioButton();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.checkInsaforp = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -177,10 +179,6 @@
             // aguinaldoBox
             // 
             this.aguinaldoBox.FormattingEnabled = true;
-            this.aguinaldoBox.Items.AddRange(new object[] {
-            "1 año a 3 años",
-            "3 años a 10 años",
-            "10 años en adelante"});
             this.aguinaldoBox.Location = new System.Drawing.Point(301, 414);
             this.aguinaldoBox.Name = "aguinaldoBox";
             this.aguinaldoBox.Size = new System.Drawing.Size(121, 24);
@@ -189,9 +187,9 @@
             // 
             // addEmpleado
             // 
-            this.addEmpleado.Location = new System.Drawing.Point(157, 564);
+            this.addEmpleado.Location = new System.Drawing.Point(192, 564);
             this.addEmpleado.Name = "addEmpleado";
-            this.addEmpleado.Size = new System.Drawing.Size(234, 29);
+            this.addEmpleado.Size = new System.Drawing.Size(170, 29);
             this.addEmpleado.TabIndex = 16;
             this.addEmpleado.Text = "Agregar Empleado";
             this.addEmpleado.UseVisualStyleBackColor = true;
@@ -205,23 +203,44 @@
             this.txtAguinaldo.Size = new System.Drawing.Size(100, 22);
             this.txtAguinaldo.TabIndex = 17;
             // 
-            // rbdInsaforp
+            // btnCalcular
             // 
-            this.rbdInsaforp.AutoSize = true;
-            this.rbdInsaforp.Location = new System.Drawing.Point(70, 500);
-            this.rbdInsaforp.Name = "rbdInsaforp";
-            this.rbdInsaforp.Size = new System.Drawing.Size(98, 21);
-            this.rbdInsaforp.TabIndex = 18;
-            this.rbdInsaforp.TabStop = true;
-            this.rbdInsaforp.Text = "INSAFORP";
-            this.rbdInsaforp.UseVisualStyleBackColor = true;
+            this.btnCalcular.Location = new System.Drawing.Point(70, 564);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(75, 29);
+            this.btnCalcular.TabIndex = 19;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(405, 564);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 29);
+            this.btnLimpiar.TabIndex = 20;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // checkInsaforp
+            // 
+            this.checkInsaforp.AutoSize = true;
+            this.checkInsaforp.Location = new System.Drawing.Point(70, 510);
+            this.checkInsaforp.Name = "checkInsaforp";
+            this.checkInsaforp.Size = new System.Drawing.Size(99, 21);
+            this.checkInsaforp.TabIndex = 21;
+            this.checkInsaforp.Text = "INSAFORP";
+            this.checkInsaforp.UseVisualStyleBackColor = true;
             // 
             // AgregarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 605);
-            this.Controls.Add(this.rbdInsaforp);
+            this.Controls.Add(this.checkInsaforp);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.txtAguinaldo);
             this.Controls.Add(this.addEmpleado);
             this.Controls.Add(this.aguinaldoBox);
@@ -268,6 +287,8 @@
         private System.Windows.Forms.ComboBox aguinaldoBox;
         private System.Windows.Forms.Button addEmpleado;
         private System.Windows.Forms.TextBox txtAguinaldo;
-        private System.Windows.Forms.RadioButton rbdInsaforp;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.CheckBox checkInsaforp;
     }
 }

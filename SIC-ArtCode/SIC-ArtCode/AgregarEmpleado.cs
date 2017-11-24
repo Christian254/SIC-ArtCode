@@ -16,6 +16,9 @@ namespace SIC_ArtCode
         public AgregarEmpleado()
         {
             InitializeComponent();
+            aguinaldoBox.Items.Insert(0, "1 año a 3 años");
+            aguinaldoBox.Items.Insert(1, "3 años a 10 años");
+            aguinaldoBox.Items.Insert(2, "10 años en adelante");
         }
 
         private void AgregarEmpleado_Load(object sender, EventArgs e)
@@ -42,7 +45,6 @@ namespace SIC_ArtCode
             float afp;
             float isss;
             float vacaciones;
-            int indexAguinaldo;
             float aguinaldo = 0;
             float insaforp = 0;
             string sentencia;
@@ -66,7 +68,7 @@ namespace SIC_ArtCode
                 comando.Parameters.AddWithValue("?salario", salario);
                 if (salario > 3000)
                 {
-                    afp = 195;
+                    afp = 195.00f;
                 }
                 else
                 {
@@ -84,20 +86,20 @@ namespace SIC_ArtCode
                 comando.Parameters.AddWithValue("?isss", isss);
                 vacaciones = (salario / 30) * (1.30f);
                 comando.Parameters.AddWithValue("?vacaciones", vacaciones);
-                if (aguinaldoBox.SelectedIndex == 1)
+                if (aguinaldoBox.SelectedIndex == 0)
                 {
                     aguinaldo = (salario / 30) * 10;
                 }
-                if(aguinaldoBox.SelectedIndex == 2)
+                if (aguinaldoBox.SelectedIndex == 1)
                 {
                     aguinaldo = (salario / 30) * 15;
                 }
-                if(aguinaldoBox.SelectedIndex == 3)
+                if (aguinaldoBox.SelectedIndex == 2)
                 {
                     aguinaldo = (salario / 30) * 18;
                 }
                 comando.Parameters.AddWithValue("?aguinaldo", aguinaldo);
-                if (rbdInsaforp.Checked)
+                if (checkInsaforp.Checked)
                 {
                     insaforp = salario * 0.01f;
                 }
@@ -115,6 +117,63 @@ namespace SIC_ArtCode
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            float salario;
+            float afp;
+            float isss;
+            float vacaciones;
+            float aguinaldo = 0;
+
+
+            salario = float.Parse(txtsalario.Text);
+            if (salario > 3000)
+            {
+                afp = 195.00f;
+            }
+            else
+            {
+                afp = salario * 0.065f;
+            }
+            txtafp.Text = afp.ToString();
+            if (salario > 1000)
+            {
+                isss = 30;
+            }
+            else
+            {
+                isss = salario * 0.075f;
+            }
+            txtisss.Text = isss.ToString();
+            vacaciones = (salario / 30) * (1.30f);
+            txtvacaciones.Text = vacaciones.ToString();
+            if (aguinaldoBox.SelectedIndex == 0)
+            {
+                aguinaldo = (salario / 30) * 10;
+            }
+            if (aguinaldoBox.SelectedIndex == 1)
+            {
+                aguinaldo = (salario / 30) * 15;
+            }
+            if (aguinaldoBox.SelectedIndex == 2)
+            {
+                aguinaldo = (salario / 30) * 18;
+            }
+            txtAguinaldo.Text = aguinaldo.ToString();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtidempleado.Text = "";
+            txtapellido.Text = "";
+            txtnombre.Text = "";
+            txtsalario.Text = "";
+            txtafp.Text = "";
+            txtisss.Text = "";
+            txtvacaciones.Text = "";
+            txtAguinaldo.Text = "";
         }
     }
 }
