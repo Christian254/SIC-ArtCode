@@ -261,16 +261,17 @@ namespace SIC_ArtCode
             {
                 if (String.Compare(readerAct.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
                 {
-                    nombre = readerAct.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                    nombre = String.Concat(readerAct.GetString("nombre"),"          ");  // Aquí se guardan el valor de las variables en tipo string
                     saldo = readerAct.GetString("saldo");
-                    string cadena = String.Concat(nombre, "                                          ", saldo, "\n");
+                    string cadena = String.Concat(nombre, "     ", saldo, "\n");
                     // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
                     //Paragraph sal = new Paragraph(saldo);
                     //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
                     //sal.Alignment = Element.ALIGN_CENTER;                    
                     //document.Add(nom);
                     //document.Add(sal);
-                    Phrase phrase = new Phrase(cadena);
+                    Paragraph phrase = new Paragraph(cadena);
+                    phrase.Alignment = Element.ALIGN_LEFT;
                     //Paragraph paragraph1 = new Paragraph(cadena);
                     //document.Add(paragraph1);
                     document.Add(phrase);
