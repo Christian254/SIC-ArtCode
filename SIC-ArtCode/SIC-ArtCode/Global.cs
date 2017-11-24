@@ -239,23 +239,31 @@ namespace SIC_ArtCode
             Paragraph paragraph = new Paragraph("Balance General", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraph);
-            MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
-            cm.Parameters.AddWithValue("?tipo", "activo"); //queres que sea de tipo activo
-            MySqlDataReader reader = cm.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
-            string activos = "Activos", pasivos="Pasivos";
+            MySqlCommand acti = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            acti.Parameters.AddWithValue("?tipo", "activo"); //queres que sea de tipo activo
+            MySqlCommand pasi = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            pasi.Parameters.AddWithValue("?tipo", "pasivo"); //queres que sea de tipo activo
+            MySqlCommand capi = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            capi.Parameters.AddWithValue("?tipo", "capital"); //queres que sea de tipo activo
+            MySqlDataReader readerAct = acti.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
+            MySqlDataReader readerPas = pasi.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
+            MySqlDataReader readerCap = capi.ExecuteReader();
+            string activos = "Activos", pasivos = "Pasivos", capital = "Capital";
             string nombre = "", saldo = "";
             Paragraph act = new Paragraph(activos, fuente);
             Paragraph pas = new Paragraph(pasivos, fuente);
+            Paragraph cap = new Paragraph(capital, fuente);
             pas.Alignment = Element.ALIGN_RIGHT;
+            cap.Alignment = Element.ALIGN_RIGHT;
             document.Add(act);
             document.Add(pas);
-            while(reader.Read())
+            while (readerAct.Read())
             {
-                if(String.Compare(reader.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
-                {                   
-                    nombre = reader.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
-                    saldo = reader.GetString("saldo");                    
-                    string cadena = String.Concat(nombre,"                                          ",saldo,"\n");
+                if (String.Compare(readerAct.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
+                {
+                    nombre = readerAct.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                    saldo = readerAct.GetString("saldo");
+                    string cadena = String.Concat(nombre, "                                          ", saldo, "\n");
                     // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
                     //Paragraph sal = new Paragraph(saldo);
                     //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
@@ -267,26 +275,51 @@ namespace SIC_ArtCode
                     //document.Add(paragraph1);
                     document.Add(phrase);
                     document.Add(new Chunk(" "));
-                }   
-                if(String.Compare(reader.GetString("tipo"), "capital") == 0)
+                }
+            }
+            while (readerPas.Read())
+            { 
+            if (String.Compare(readerPas.GetString("tipo"), "pasivo") == 0)
+            {
+                string nombre1 = readerPas.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                string saldo1 = readerPas.GetString("saldo");
+                string cadena1 = String.Concat(nombre1, "                                          ", saldo1, "\n");
+                // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
+                //Paragraph sal = new Paragraph(saldo);
+                //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
+                //sal.Alignment = Element.ALIGN_CENTER;                    
+                //document.Add(nom);
+                //document.Add(sal);
+                Paragraph phrase = new Paragraph(cadena1);
+                phrase.Alignment = Element.ALIGN_RIGHT;
+                //Paragraph paragraph1 = new Paragraph(cadena);
+                //document.Add(paragraph1);
+                document.Add(phrase);
+                document.Add(new Chunk(" "));
+            }
+            }
+            document.Add(cap);
+            while (readerCap.Read())
+            {
+                if (String.Compare(readerCap.GetString("tipo"), "capital") == 0)
                 {
-                        string nombre1 = reader.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
-                        string saldo1 = reader.GetString("saldo");
-                        string cadena1 = String.Concat(nombre1, "                                          ", saldo1, "\n");
-                        // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
-                        //Paragraph sal = new Paragraph(saldo);
-                        //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
-                        //sal.Alignment = Element.ALIGN_CENTER;                    
-                        //document.Add(nom);
-                        //document.Add(sal);
-                        Paragraph phrase = new Paragraph(cadena1);
-                        phrase.Alignment = Element.ALIGN_RIGHT;
-                        //Paragraph paragraph1 = new Paragraph(cadena);
-                        //document.Add(paragraph1);
-                        document.Add(phrase);
-                        document.Add(new Chunk(" "));
+                    string nombre2 = readerCap.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                    string saldo2 = readerCap.GetString("saldo");
+                    string cadena2 = String.Concat(nombre2, "                                          ", saldo2, "\n");
+                    // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
+                    //Paragraph sal = new Paragraph(saldo);
+                    //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
+                    //sal.Alignment = Element.ALIGN_CENTER;                    
+                    //document.Add(nom);
+                    //document.Add(sal);
+                    Paragraph phrase = new Paragraph(cadena2);
+                    phrase.Alignment = Element.ALIGN_RIGHT;
+                    //Paragraph paragraph1 = new Paragraph(cadena);
+                    //document.Add(paragraph1);
+                    document.Add(phrase);
+                    document.Add(new Chunk(" "));
                 }
-                }
+            }
             document.Close();
             BDComun.Conectar().Close();
         }
