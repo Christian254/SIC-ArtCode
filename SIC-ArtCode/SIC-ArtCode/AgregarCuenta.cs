@@ -49,7 +49,6 @@ namespace SIC_ArtCode
                     comando.Parameters.AddWithValue("?tipo", "activo");
                 }
 
-<<<<<<< HEAD
 
                     comando.Parameters.AddWithValue("?saldo", saldo);
                     comando.Parameters.AddWithValue("?fecha", fech);
@@ -59,11 +58,10 @@ namespace SIC_ArtCode
                     txtIdCuenta.Clear();
                     txtNmbCuenta.Clear();
                     txtSaldo.Clear();
-=======
+
                 if (rdbPasivo.Checked)
                 {
                     comando.Parameters.AddWithValue("?tipo", "pasivo");
->>>>>>> 536d71612c04e284f2ed05eb4bd0fd17d6f401eb
                 }
                 if (rdbCapital.Checked)
                 {

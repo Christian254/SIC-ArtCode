@@ -28,11 +28,7 @@ namespace SIC_ArtCode
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-           
-=======
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
->>>>>>> 536d71612c04e284f2ed05eb4bd0fd17d6f401eb
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)
