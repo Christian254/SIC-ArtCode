@@ -28,7 +28,11 @@ namespace SIC_ArtCode
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
            
+=======
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
+>>>>>>> 536d71612c04e284f2ed05eb4bd0fd17d6f401eb
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,6 +68,23 @@ namespace SIC_ArtCode
         {
             General general = new General();
             general.ShowDialog();
+        }
+
+        private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void agregarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarEmpleado nuevoEmpleado = new AgregarEmpleado();
+            nuevoEmpleado.ShowDialog();
+        }
+
+        private void verPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerPlanilla planilla = new VerPlanilla();
+            planilla.ShowDialog();
         }
     }
 }

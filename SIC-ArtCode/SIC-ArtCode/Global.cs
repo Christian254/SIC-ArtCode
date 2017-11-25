@@ -29,6 +29,15 @@ namespace SIC_ArtCode
             grid.DataSource = tabla;
             BDComun.Conectar().Close();
         }
+        public void ActualizarEmpleados(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM empleado", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
         public double sumatoriaCuentas(string tipo)
         {            
             double sumatoria = 0;
@@ -323,6 +332,37 @@ namespace SIC_ArtCode
             }
             document.Close();
             BDComun.Conectar().Close();
+        }
+
+        public void PlanillaPDF(Document documento, DataGridView grid)
+        {
+            PdfPTable table = new PdfPTable(grid.ColumnCount);
+            Paragraph paragraph = new Paragraph("Planilla", fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;
+            documento.Add(paragraph);
+            table.DefaultCell.Padding = 3;
+            int i, j;
+            for (i = 0; i < grid.ColumnCount; i++)
+            {
+                table.AddCell(grid.Columns[i].HeaderText);
+            }
+            for (i = 0; i < grid.RowCount; i++)
+            {
+
+                for (j = 0; j < grid.ColumnCount; j++)
+                {
+                    if (grid[j, i].Value != null)
+                    {
+                        table.AddCell(new Phrase(grid[j, i].Value.ToString()));
+                    }
+                }
+                table.CompleteRow();
+            }
+            documento.Add(new Chunk(""));
+            documento.Add(new Chunk(""));
+            documento.Add(table);
+            documento.Close();
+
         }
 
     }

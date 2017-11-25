@@ -42,28 +42,14 @@ namespace SIC_ArtCode
                 sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
                 
                 MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
-                try
+                comando.Parameters.AddWithValue("?idcuenta", idCuenta);
+                comando.Parameters.AddWithValue("?nombre", nmbCuenta);
+                if (rdbActivo.Checked)
                 {
-                    comando.Parameters.AddWithValue("?idcuenta", idCuenta);
-                    comando.Parameters.AddWithValue("?nombre", nmbCuenta);
-                    if (rdbActivo.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "activo");
-                    }
+                    comando.Parameters.AddWithValue("?tipo", "activo");
+                }
 
-                    if (rdbPasivo.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "pasivo");
-                    }
-                    if (rdbCapital.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "capital");
-                    }
-                    if (rdbResultado.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "resultado");
-                    }
-
+<<<<<<< HEAD
 
                     comando.Parameters.AddWithValue("?saldo", saldo);
                     comando.Parameters.AddWithValue("?fecha", fech);
@@ -73,11 +59,28 @@ namespace SIC_ArtCode
                     txtIdCuenta.Clear();
                     txtNmbCuenta.Clear();
                     txtSaldo.Clear();
-                }
-                catch(MySqlException)
+=======
+                if (rdbPasivo.Checked)
                 {
-                    MessageBox.Show("El id o la cuenta introducida ya existe");
+                    comando.Parameters.AddWithValue("?tipo", "pasivo");
+>>>>>>> 536d71612c04e284f2ed05eb4bd0fd17d6f401eb
                 }
+                if (rdbCapital.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "capital");
+                }
+                if (rdbResultado.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "resultado");
+                }
+
+                comando.Parameters.AddWithValue("?saldo", saldo);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
+                BDComun.Conectar().Close();
+                txtIdCuenta.Clear();
+                txtNmbCuenta.Clear();
+                txtSaldo.Clear();
             }
         }
 
