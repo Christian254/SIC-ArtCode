@@ -39,7 +39,6 @@
             this.balanceGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -127,7 +126,6 @@
             // 
             this.planillaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarEmpleadoToolStripMenuItem,
-            this.editarEmpleadoToolStripMenuItem,
             this.verPlanillaToolStripMenuItem});
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
             this.planillaToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
@@ -140,12 +138,6 @@
             this.agregarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.agregarEmpleadoToolStripMenuItem.Text = "Agregar Empleado";
             this.agregarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.agregarEmpleadoToolStripMenuItem_Click);
-            // 
-            // editarEmpleadoToolStripMenuItem
-            // 
-            this.editarEmpleadoToolStripMenuItem.Name = "editarEmpleadoToolStripMenuItem";
-            this.editarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
-            this.editarEmpleadoToolStripMenuItem.Text = "Editar Empleado";
             // 
             // verPlanillaToolStripMenuItem
             // 
@@ -208,7 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem balanceGeneralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarEmpleadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verPlanillaToolStripMenuItem;
         private System.Windows.Forms.Label lblFecha;
     }

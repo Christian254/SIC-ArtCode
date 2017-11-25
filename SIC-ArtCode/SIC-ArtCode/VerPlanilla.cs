@@ -36,5 +36,27 @@ namespace SIC_ArtCode
             document = nueva.CrearPDF("general");
             nueva.PlanillaPDF(document, dataGridView1);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtEliminarE.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            BDComun.Conectar();
+            MySqlCommand cm = new MySqlCommand("Delete from empleado where idempleado=?idempleado", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?idempleado", int.Parse(txtEliminarE.Text));
+            cm.ExecuteNonQuery();
+            MessageBox.Show("Eliminado");
+            BDComun.Conectar().Close();
+            nueva.ActualizarEmpleados(dataGridView1);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            EditarEmpleado editarEmpleado = new EditarEmpleado(int.Parse(txtEliminarE.Text));
+            editarEmpleado.ShowDialog();
+        }
     }
 }
