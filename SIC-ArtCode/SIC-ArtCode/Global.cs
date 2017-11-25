@@ -271,7 +271,7 @@ namespace SIC_ArtCode
                     //document.Add(nom);
                     //document.Add(sal);
                     Paragraph phrase = new Paragraph(cadena);
-                    phrase.Alignment = Element.ALIGN_LEFT;
+                    phrase.Alignment = Element.ALIGN_LEFT;                  
                     //Paragraph paragraph1 = new Paragraph(cadena);
                     //document.Add(paragraph1);
                     document.Add(phrase);

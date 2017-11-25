@@ -26,10 +26,9 @@ namespace SIC_ArtCode
             AgregarCuenta nuevaCuenta = new AgregarCuenta();
             nuevaCuenta.ShowDialog();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)

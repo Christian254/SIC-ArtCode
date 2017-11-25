@@ -41,7 +41,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(78, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(431, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(526, 150);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -64,7 +64,7 @@
             // 
             // btnPDF
             // 
-            this.btnPDF.Location = new System.Drawing.Point(371, 207);
+            this.btnPDF.Location = new System.Drawing.Point(383, 207);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(138, 23);
             this.btnPDF.TabIndex = 4;
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 262);
+            this.ClientSize = new System.Drawing.Size(672, 262);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.txtIdCuentaRmv);
             this.Controls.Add(this.btnEliminar);

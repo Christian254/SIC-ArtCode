@@ -20,12 +20,13 @@ namespace SIC_ArtCode
         public Cuentas()
         {
             InitializeComponent();
+            
         }              
 
         private void VerCuenta_Load(object sender, EventArgs e)
         {
-            
             nueva.ActualizarGrid(dataGridView1);
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

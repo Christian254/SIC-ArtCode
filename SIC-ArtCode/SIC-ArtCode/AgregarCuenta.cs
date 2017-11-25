@@ -13,17 +13,22 @@ namespace SIC_ArtCode
 {
     public partial class AgregarCuenta : Form
     {
+        
         public AgregarCuenta()
         {
             InitializeComponent();
+            DateTime fechaHoy = DateTime.Today;
+            string fecha = fechaHoy.ToString("s");
+            txtFecha.Text = fecha.Substring(0,10);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
-        {
+        {            
             int idCuenta;
             double saldo;
             string nmbCuenta = txtNmbCuenta.Text;
-            string sentencia;
+            string sentencia, fech=txtFecha.Text;
+            
 
             if (string.IsNullOrWhiteSpace(txtIdCuenta.Text) || string.IsNullOrWhiteSpace(txtNmbCuenta.Text) || string.IsNullOrWhiteSpace(txtSaldo.Text))
             {
@@ -33,7 +38,9 @@ namespace SIC_ArtCode
             {
                 idCuenta = int.Parse(txtIdCuenta.Text);
                 saldo = double.Parse(txtSaldo.Text);
-                sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo) values(?idcuenta, ?nombre, ?tipo, ?saldo)";
+                fech = txtFecha.Text;
+                sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
+                
                 MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
                 try
                 {
@@ -57,7 +64,9 @@ namespace SIC_ArtCode
                         comando.Parameters.AddWithValue("?tipo", "resultado");
                     }
 
+
                     comando.Parameters.AddWithValue("?saldo", saldo);
+                    comando.Parameters.AddWithValue("?fecha", fech);
                     comando.ExecuteNonQuery();
                     MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
                     BDComun.Conectar().Close();
@@ -84,6 +93,11 @@ namespace SIC_ArtCode
 
 
 
+        }
+
+        private void txtFecha_TextChanged(object sender, EventArgs e)
+        {
+             
         }
     }
     //Prueba
