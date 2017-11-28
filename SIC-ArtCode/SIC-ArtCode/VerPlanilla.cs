@@ -58,5 +58,10 @@ namespace SIC_ArtCode
             EditarEmpleado editarEmpleado = new EditarEmpleado(int.Parse(txtEliminarE.Text));
             editarEmpleado.ShowDialog();
         }
+
+        public void actualizar()
+        {
+            nueva.ActualizarEmpleados(dataGridView1);
+        }
     }
 }
