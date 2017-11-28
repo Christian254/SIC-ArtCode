@@ -23,6 +23,7 @@ namespace SIC_ArtCode
         public VerPlanilla()
         {
             InitializeComponent();
+            nueva.ActualizarEmpleados(dataGridView1);
         }
 
         private void VerPlanilla_Load(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace SIC_ArtCode
         {
             EditarEmpleado editarEmpleado = new EditarEmpleado(int.Parse(txtEliminarE.Text));
             editarEmpleado.ShowDialog();
+            nueva.ActualizarEmpleados(dataGridView1);
         }
 
         public void actualizar()
