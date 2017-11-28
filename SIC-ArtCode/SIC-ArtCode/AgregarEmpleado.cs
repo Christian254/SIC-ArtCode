@@ -51,7 +51,7 @@ namespace SIC_ArtCode
 
             if(string.IsNullOrWhiteSpace(txtidempleado.Text) || string.IsNullOrWhiteSpace(txtapellido.Text) || string.IsNullOrWhiteSpace(txtnombre.Text) || string.IsNullOrWhiteSpace(txtsalario.Text))
             {
-                MessageBox.Show("Todos los campos deben estar llenos para agregar una cuenta");
+                MessageBox.Show("Todos los campos deben estar llenos para agregar una empleado");
             }
 
             else

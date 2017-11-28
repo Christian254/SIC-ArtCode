@@ -88,5 +88,17 @@ namespace SIC_ArtCode
             AgregarServicio servicio = new AgregarServicio();
             servicio.ShowDialog();
         }
+
+        private void agregarActividadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarActividad actividad = new AgregarActividad();
+            actividad.ShowDialog();
+        }
+
+        private void agregarRecursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarRecurso recurso = new AgregarRecurso();
+            recurso.ShowDialog();
+        }
     }
 }

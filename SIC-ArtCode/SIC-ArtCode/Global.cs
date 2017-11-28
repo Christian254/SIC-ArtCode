@@ -38,6 +38,17 @@ namespace SIC_ArtCode
             grid.DataSource = tabla;
             BDComun.Conectar().Close();
         }
+
+        public void ActualizarServicios(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT nombre_servicio FROM servicio", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
         public double sumatoriaCuentas(string tipo)
         {            
             double sumatoria = 0;

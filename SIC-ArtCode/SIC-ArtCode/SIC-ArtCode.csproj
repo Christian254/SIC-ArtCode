@@ -55,6 +55,12 @@
     <Compile Include="AgregarCuenta.Designer.cs">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarRecurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarRecurso.Designer.cs">
+      <DependentUpon>AgregarRecurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarServicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,12 @@
     <Compile Include="EditarEmpleado.Designer.cs">
       <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarActividad.Designer.cs">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerPlanilla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +131,20 @@
     <Compile Include="VerCuenta.Designer.cs">
       <DependentUpon>VerCuenta.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarActividad.resx">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarCuenta.resx">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarEmpleado.resx">
       <DependentUpon>AgregarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarRecurso.resx">
+      <DependentUpon>AgregarRecurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarServicio.resx">
+      <DependentUpon>AgregarServicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capital.resx">
       <DependentUpon>Capital.cs</DependentUpon>
