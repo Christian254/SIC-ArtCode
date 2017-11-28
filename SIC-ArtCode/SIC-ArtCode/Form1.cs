@@ -82,5 +82,11 @@ namespace SIC_ArtCode
             VerPlanilla planilla = new VerPlanilla();
             planilla.ShowDialog();
         }
+
+        private void agregarServicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarServicio servicio = new AgregarServicio();
+            servicio.ShowDialog();
+        }
     }
 }

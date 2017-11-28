@@ -42,6 +42,9 @@
             this.verPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
+            this.costeoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarActividadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +54,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cuentaToolStripMenuItem,
             this.estadosToolStripMenuItem,
-            this.planillaToolStripMenuItem});
+            this.planillaToolStripMenuItem,
+            this.costeoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -166,6 +170,28 @@
             this.lblFecha.TabIndex = 5;
             this.lblFecha.Text = "label2";
             // 
+            // costeoToolStripMenuItem
+            // 
+            this.costeoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarServicioToolStripMenuItem,
+            this.agregarActividadToolStripMenuItem});
+            this.costeoToolStripMenuItem.Name = "costeoToolStripMenuItem";
+            this.costeoToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.costeoToolStripMenuItem.Text = "Costeo";
+            // 
+            // agregarServicioToolStripMenuItem
+            // 
+            this.agregarServicioToolStripMenuItem.Name = "agregarServicioToolStripMenuItem";
+            this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.agregarServicioToolStripMenuItem.Text = "Agregar servicio";
+            this.agregarServicioToolStripMenuItem.Click += new System.EventHandler(this.agregarServicioToolStripMenuItem_Click);
+            // 
+            // agregarActividadToolStripMenuItem
+            // 
+            this.agregarActividadToolStripMenuItem.Name = "agregarActividadToolStripMenuItem";
+            this.agregarActividadToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.agregarActividadToolStripMenuItem.Text = "Agregar actividad";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -202,6 +228,9 @@
         private System.Windows.Forms.ToolStripMenuItem agregarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verPlanillaToolStripMenuItem;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.ToolStripMenuItem costeoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarServicioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarActividadToolStripMenuItem;
     }
 }
 
