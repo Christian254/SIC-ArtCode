@@ -20,7 +20,7 @@ namespace SIC_ArtCode
         public Cuentas()
         {
             InitializeComponent();
-            
+            nueva.ActualizarGrid(dataGridView1);
         }              
 
         private void VerCuenta_Load(object sender, EventArgs e)
@@ -52,6 +52,13 @@ namespace SIC_ArtCode
             document = nueva.CrearPDF("general");
             nueva.CatalogoCuentasPDF(document, dataGridView1);
 
+        }
+
+        private void btnAjuste_Click(object sender, EventArgs e)
+        {
+            Ajuste ajuste = new Ajuste(int.Parse(txtIdCuentaRmv.Text));
+            ajuste.ShowDialog();
+            nueva.ActualizarGrid(dataGridView1);
         }
     }
 }

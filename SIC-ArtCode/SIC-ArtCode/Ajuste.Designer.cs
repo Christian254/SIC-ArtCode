@@ -1,0 +1,62 @@
+﻿namespace SIC_ArtCode
+{
+    partial class Ajuste
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnDep = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnDep
+            // 
+            this.btnDep.Location = new System.Drawing.Point(43, 61);
+            this.btnDep.Name = "btnDep";
+            this.btnDep.Size = new System.Drawing.Size(88, 23);
+            this.btnDep.TabIndex = 0;
+            this.btnDep.Text = "Depreciacion";
+            this.btnDep.UseVisualStyleBackColor = true;
+            this.btnDep.Click += new System.EventHandler(this.btnDep_Click);
+            // 
+            // Ajuste
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(471, 157);
+            this.Controls.Add(this.btnDep);
+            this.MaximizeBox = false;
+            this.Name = "Ajuste";
+            this.Text = "Ajuste";
+            this.Load += new System.EventHandler(this.Ajuste_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnDep;
+    }
+}

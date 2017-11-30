@@ -25,7 +25,7 @@ namespace SIC_ArtCode
         private void btnAgregar_Click(object sender, EventArgs e)
         {            
             int idCuenta;
-            double saldo;
+            float saldo;
             string nmbCuenta = txtNmbCuenta.Text;
             string sentencia, fech=txtFecha.Text;
             
@@ -37,7 +37,7 @@ namespace SIC_ArtCode
             else
             {
                 idCuenta = int.Parse(txtIdCuenta.Text);
-                saldo = double.Parse(txtSaldo.Text);
+                saldo = float.Parse(txtSaldo.Text);
                 fech = txtFecha.Text;
                 sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
                 
@@ -47,17 +47,8 @@ namespace SIC_ArtCode
                 if (rdbActivo.Checked)
                 {
                     comando.Parameters.AddWithValue("?tipo", "activo");
-                }
-
-
-                    comando.Parameters.AddWithValue("?saldo", saldo);
+                }                   
                     comando.Parameters.AddWithValue("?fecha", fech);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
-                    BDComun.Conectar().Close();
-                    txtIdCuenta.Clear();
-                    txtNmbCuenta.Clear();
-                    txtSaldo.Clear();
 
                 if (rdbPasivo.Checked)
                 {

@@ -32,6 +32,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtIdCuentaRmv = new System.Windows.Forms.TextBox();
             this.btnPDF = new System.Windows.Forms.Button();
+            this.btnAjuste = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,13 +42,13 @@
             this.dataGridView1.Location = new System.Drawing.Point(78, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(526, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(538, 150);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(211, 207);
+            this.btnEliminar.Location = new System.Drawing.Point(199, 204);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(138, 23);
             this.btnEliminar.TabIndex = 2;
@@ -64,7 +65,7 @@
             // 
             // btnPDF
             // 
-            this.btnPDF.Location = new System.Drawing.Point(383, 207);
+            this.btnPDF.Location = new System.Drawing.Point(343, 204);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(138, 23);
             this.btnPDF.TabIndex = 4;
@@ -72,11 +73,22 @@
             this.btnPDF.UseVisualStyleBackColor = true;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
+            // btnAjuste
+            // 
+            this.btnAjuste.Location = new System.Drawing.Point(487, 204);
+            this.btnAjuste.Name = "btnAjuste";
+            this.btnAjuste.Size = new System.Drawing.Size(138, 23);
+            this.btnAjuste.TabIndex = 5;
+            this.btnAjuste.Text = "Ajustes";
+            this.btnAjuste.UseVisualStyleBackColor = true;
+            this.btnAjuste.Click += new System.EventHandler(this.btnAjuste_Click);
+            // 
             // Cuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 262);
+            this.ClientSize = new System.Drawing.Size(700, 262);
+            this.Controls.Add(this.btnAjuste);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.txtIdCuentaRmv);
             this.Controls.Add(this.btnEliminar);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtIdCuentaRmv;
         private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.Button btnAjuste;
     }
 }

@@ -55,6 +55,12 @@
     <Compile Include="AgregarCuenta.Designer.cs">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajuste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajuste.Designer.cs">
+      <DependentUpon>Ajuste.cs</DependentUpon>
+    </Compile>
     <Compile Include="BDComun.cs" />
     <Compile Include="Capital.cs">
       <SubType>Form</SubType>
@@ -67,6 +73,12 @@
     </Compile>
     <Compile Include="Comprobacion.Designer.cs">
       <DependentUpon>Comprobacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Depreciacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Depreciacion.Designer.cs">
+      <DependentUpon>Depreciacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -119,11 +131,17 @@
     <EmbeddedResource Include="AgregarEmpleado.resx">
       <DependentUpon>AgregarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ajuste.resx">
+      <DependentUpon>Ajuste.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Capital.resx">
       <DependentUpon>Capital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprobacion.resx">
       <DependentUpon>Comprobacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Depreciacion.resx">
+      <DependentUpon>Depreciacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarEmpleado.resx">
       <DependentUpon>EditarEmpleado.cs</DependentUpon>

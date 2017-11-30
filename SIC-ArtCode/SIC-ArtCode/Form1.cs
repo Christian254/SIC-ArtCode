@@ -29,6 +29,15 @@ namespace SIC_ArtCode
         private void Form1_Load(object sender, EventArgs e)
         {
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
+            string sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
+            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+            comando.Parameters.AddWithValue("?idcuenta", 5000);
+            comando.Parameters.AddWithValue("?nombre", "Gasto Por Depreciacion");
+            comando.Parameters.AddWithValue("?tipo", "resultado");
+            comando.Parameters.AddWithValue("?saldo", 0);
+            comando.Parameters.AddWithValue("?fecha", "2017/11/29");
+            comando.ExecuteNonQuery();
+            BDComun.Conectar().Close();
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)

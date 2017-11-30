@@ -195,5 +195,10 @@ namespace SIC_ArtCode
             var instance = new VerPlanilla();
             instance.actualizar();
         }
+
+        private void aguinaldoBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
