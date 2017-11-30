@@ -34,11 +34,14 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblCosto = new System.Windows.Forms.Label();
             this.txtCosto = new System.Windows.Forms.TextBox();
-            this.actividadBox = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.txtIdServicio = new System.Windows.Forms.TextBox();
+            this.txtIdActividad = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
@@ -89,52 +92,71 @@
             this.txtCosto.Size = new System.Drawing.Size(100, 22);
             this.txtCosto.TabIndex = 5;
             // 
-            // actividadBox
-            // 
-            this.actividadBox.FormattingEnabled = true;
-            this.actividadBox.Location = new System.Drawing.Point(109, 305);
-            this.actividadBox.Name = "actividadBox";
-            this.actividadBox.Size = new System.Drawing.Size(216, 24);
-            this.actividadBox.TabIndex = 7;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(109, 190);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(216, 69);
-            this.dataGridView1.TabIndex = 8;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(176, 335);
+            this.btnAgregar.Location = new System.Drawing.Point(174, 219);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 38);
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnSeleccionar
+            // dataGridView1
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(158, 265);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(107, 34);
-            this.btnSeleccionar.TabIndex = 10;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(882, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(448, 31);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Location = new System.Drawing.Point(756, 227);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(75, 41);
+            this.btnMostrar.TabIndex = 12;
+            this.btnMostrar.Text = "Mostrar";
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
+            // txtIdServicio
+            // 
+            this.txtIdServicio.Location = new System.Drawing.Point(533, 235);
+            this.txtIdServicio.Name = "txtIdServicio";
+            this.txtIdServicio.Size = new System.Drawing.Size(100, 22);
+            this.txtIdServicio.TabIndex = 13;
+            // 
+            // txtIdActividad
+            // 
+            this.txtIdActividad.Location = new System.Drawing.Point(960, 235);
+            this.txtIdActividad.Name = "txtIdActividad";
+            this.txtIdActividad.Size = new System.Drawing.Size(100, 22);
+            this.txtIdActividad.TabIndex = 14;
             // 
             // AgregarRecurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 445);
-            this.Controls.Add(this.btnSeleccionar);
-            this.Controls.Add(this.btnAgregar);
+            this.ClientSize = new System.Drawing.Size(1180, 294);
+            this.Controls.Add(this.txtIdActividad);
+            this.Controls.Add(this.txtIdServicio);
+            this.Controls.Add(this.btnMostrar);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.actividadBox);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtCosto);
             this.Controls.Add(this.lblCosto);
             this.Controls.Add(this.txtNombre);
@@ -145,6 +167,7 @@
             this.Text = "AgregarRecurso";
             this.Load += new System.EventHandler(this.AgregarRecurso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,9 +181,11 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.TextBox txtCosto;
-        private System.Windows.Forms.ComboBox actividadBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.TextBox txtIdServicio;
+        private System.Windows.Forms.TextBox txtIdActividad;
     }
 }

@@ -41,7 +41,19 @@ namespace SIC_ArtCode
 
         public void ActualizarServicios(DataGridView grid)
         {
-            MySqlCommand cm = new MySqlCommand("SELECT nombre_servicio FROM servicio", BDComun.Conectar());
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM servicio", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
+        public void ActualizarActvidades(DataGridView grid, int idServicio)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM actividad WHERE servicio_idservicio=?servicio_idservicio", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?servicio_idservicio", idServicio);
+            cm.ExecuteNonQuery();
             MySqlDataAdapter datos = new MySqlDataAdapter(cm);
             DataTable tabla = new DataTable();
             datos.Fill(tabla);

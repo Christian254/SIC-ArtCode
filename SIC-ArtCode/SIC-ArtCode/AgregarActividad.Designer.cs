@@ -33,7 +33,9 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.comboBoxServicio = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtservicioId = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
@@ -70,7 +72,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(157, 189);
+            this.btnAgregar.Location = new System.Drawing.Point(150, 345);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 31);
             this.btnAgregar.TabIndex = 4;
@@ -78,20 +80,30 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // comboBoxServicio
+            // dataGridView1
             // 
-            this.comboBoxServicio.FormattingEnabled = true;
-            this.comboBoxServicio.Location = new System.Drawing.Point(138, 147);
-            this.comboBoxServicio.Name = "comboBoxServicio";
-            this.comboBoxServicio.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxServicio.TabIndex = 5;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(60, 161);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // txtservicioId
+            // 
+            this.txtservicioId.Location = new System.Drawing.Point(235, 349);
+            this.txtservicioId.Name = "txtservicioId";
+            this.txtservicioId.Size = new System.Drawing.Size(100, 22);
+            this.txtservicioId.TabIndex = 6;
             // 
             // AgregarActividad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 242);
-            this.Controls.Add(this.comboBoxServicio);
+            this.ClientSize = new System.Drawing.Size(384, 405);
+            this.Controls.Add(this.txtservicioId);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
@@ -100,6 +112,7 @@
             this.Name = "AgregarActividad";
             this.Text = "Agregar Actividad";
             this.Load += new System.EventHandler(this.AgregarActividad_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,6 +125,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.ComboBox comboBoxServicio;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtservicioId;
     }
 }

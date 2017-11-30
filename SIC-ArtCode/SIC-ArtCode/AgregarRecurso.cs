@@ -13,47 +13,53 @@ namespace SIC_ArtCode
 {
     public partial class AgregarRecurso : Form
     {
+
         Global nueva = new Global();
-        int idServicio;
-        int i = 0;
+        //int idServicio;
+        //int i = 0;
 
         public AgregarRecurso()
         {
             InitializeComponent();
-            nueva.ActualizarServicios(dataGridView1);
+            nueva.ActualizarServicios(dataGridView2);
         }
 
         private void AgregarRecurso_Load(object sender, EventArgs e)
         {
-            nueva.ActualizarServicios(dataGridView1);
+            nueva.ActualizarServicios(dataGridView2);
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtIdServicio.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            nueva.ActualizarActvidades(dataGridView1, int.Parse(txtIdServicio.Text.ToString()));
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            idServicio = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString()); 
-
+            txtIdActividad.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
         }
 
-        private void btnSeleccionar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            MySqlCommand cm = new MySqlCommand("SELECT COUNT(*) FROM actividad WHERE servicio_idservicio=?servicio_idservicio", BDComun.Conectar());
-            cm.Parameters.AddWithValue("?servicio_idservicio", idServicio);
-            int count = int.Parse(cm.ExecuteScalar().ToString());
-            BDComun.Conectar().Close();
+            string sentencia;
 
-            while (i <= count)
-            {
-                MySqlCommand cm1 = new MySqlCommand("SELECT nombre_actvidad FROM actividad WHERE servicio_idservicio=?servicio_idservicio", BDComun.Conectar());
-                cm1.Parameters.AddWithValue("?servicio_idservicio", idServicio);
-                cm1.ExecuteNonQuery();
-                MySqlDataReader DR = cm1.ExecuteReader();
-                if (DR.Read())
-                {
-                    actividadBox.Items.Insert(0, DR.GetValue(0).ToString());
-                }
-                BDComun.Conectar().Close();
-                i++;
-            }
+
+            sentencia = @"insert into recursos(idrecursos, nombre_recursos, costo_recurso, actividad_idactividad) values(?idrecursos, ?nombre_recursos, ?costo_recurso, ?actividad_idactividad)";
+            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+            comando.Parameters.AddWithValue("?idrecursos", int.Parse(txtId.Text.ToString()));
+            comando.Parameters.AddWithValue("?nombre_recursos", txtNombre.Text.ToString());
+            comando.Parameters.AddWithValue("?costo_recurso", float.Parse(txtCosto.Text.ToString()));
+            comando.Parameters.AddWithValue("?actividad_idactividad", int.Parse(txtIdActividad.Text.ToString()));
+            comando.ExecuteNonQuery();
+            MessageBox.Show("El recurso " + txtNombre.Text.ToString() + " ha sido agregado, con un costo de: " + txtCosto.Text.ToString());
+            BDComun.Conectar().Close();
+            txtId.Clear();
+            txtNombre.Clear();
         }
     }
 }

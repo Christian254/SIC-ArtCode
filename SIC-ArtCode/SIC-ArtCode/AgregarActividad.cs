@@ -14,15 +14,22 @@ namespace SIC_ArtCode
 {
     public partial class AgregarActividad : Form
     {
+
+
+        Global nueva = new Global();
         public AgregarActividad()
         {
             InitializeComponent();
-            
+            nueva.ActualizarServicios(dataGridView1);
         }
+
+       
 
         private void AgregarActividad_Load(object sender, EventArgs e)
         {
-            int i = 0;                        
+            nueva.ActualizarServicios(dataGridView1);
+
+            /*int i = 0;                        
             
             MySqlCommand cm = new MySqlCommand("SELECT COUNT(*) FROM servicio", BDComun.Conectar());
             int count = int.Parse(cm.ExecuteScalar().ToString());
@@ -39,31 +46,35 @@ namespace SIC_ArtCode
                 }
                 BDComun.Conectar().Close();
                 i++;
-            }
+            } */
 
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtservicioId.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             int idActividad;
             string nombreActividad;
-            string sentencia;
-            int idServicio = 0;
+            string sentencia; 
             float costo = 0f;
-            string prueba; 
+             
 
-            if(string.IsNullOrEmpty(txtId.Text) || string.IsNullOrEmpty(txtNombre.Text) || comboBoxServicio.SelectedIndex <= -1)
+            if(String.IsNullOrEmpty(txtservicioId.Text))
             {
                 MessageBox.Show("Todos los campos deben estar llenos para agregar una actividad");
             }
             else
             {
                 idActividad = int.Parse(txtId.Text);
-                nombreActividad = txtNombre.Text;
+                nombreActividad = txtNombre.Text; 
                 //idServicio = comboBoxServicio.SelectedIndex;
-                prueba = comboBoxServicio.SelectedText;
-                MySqlCommand cm1 = new MySqlCommand("SELECT idservicio FROM servicio WHERE nombre_servicio=?nombre_servicio", BDComun.Conectar());
+                //prueba = comboBoxServicio.SelectedText;
+                /*ySqlCommand cm1 = new MySqlCommand("SELECT idservicio FROM servicio WHERE nombre_servicio=?nombre_servicio", BDComun.Conectar());
                 cm1.Parameters.AddWithValue("?nombre_servicio", prueba);
                 cm1.ExecuteNonQuery();
                 MySqlDataReader DR = cm1.ExecuteReader();
@@ -71,7 +82,7 @@ namespace SIC_ArtCode
                 {
                     idServicio = int.Parse(DR.GetValue(0).ToString());
                 }
-                BDComun.Conectar().Close();
+                BDComun.Conectar().Close(); */
                 
 
 
@@ -84,13 +95,15 @@ namespace SIC_ArtCode
                 comando.Parameters.AddWithValue("?idactividad", idActividad);
                 comando.Parameters.AddWithValue("?nombre_actvidad", nombreActividad);
                 comando.Parameters.AddWithValue("?costo_actividad", costo);
-                comando.Parameters.AddWithValue("?servicio_idservicio", idServicio);
+                comando.Parameters.AddWithValue("?servicio_idservicio", int.Parse(txtservicioId.Text.ToString()));
                 comando.ExecuteNonQuery();
                 MessageBox.Show("La actividad " + nombreActividad + " ha sido agregada");
                 BDComun.Conectar().Close();
                 txtId.Clear();
                 txtNombre.Clear();
-            }
+            } 
         }
+
+        
     }
 }
