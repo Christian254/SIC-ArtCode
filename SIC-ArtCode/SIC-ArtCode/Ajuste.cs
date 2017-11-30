@@ -29,5 +29,11 @@ namespace SIC_ArtCode
             Depreciacion depreciacion = new Depreciacion(id);
             depreciacion.ShowDialog();
         }
+
+        private void btnGasAcum_Click(object sender, EventArgs e)
+        {
+            GastoAcumulado gastoAcumulado = new GastoAcumulado(id);
+            gastoAcumulado.ShowDialog();
+        }
     }
 }

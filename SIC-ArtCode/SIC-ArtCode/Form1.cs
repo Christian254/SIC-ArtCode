@@ -28,6 +28,7 @@ namespace SIC_ArtCode
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            /* Agregando Cuenta Resultado Gasto Por Depreciacion  */
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
             string sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
             MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
@@ -37,6 +38,16 @@ namespace SIC_ArtCode
             comando.Parameters.AddWithValue("?saldo", 0);
             comando.Parameters.AddWithValue("?fecha", "2017/11/29");
             comando.ExecuteNonQuery();
+            BDComun.Conectar().Close();
+            /* Agregando Cuenta Resultado Gasto Acumulado */
+            string sentencia1 = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
+            MySqlCommand comando1 = new MySqlCommand(sentencia1, BDComun.Conectar());
+            comando1.Parameters.AddWithValue("?idcuenta", 20000);
+            comando1.Parameters.AddWithValue("?nombre", "Gasto Acumulado");
+            comando1.Parameters.AddWithValue("?tipo", "resultado");
+            comando1.Parameters.AddWithValue("?saldo", 0);
+            comando1.Parameters.AddWithValue("?fecha", "2017/11/29");
+            comando1.ExecuteNonQuery();
             BDComun.Conectar().Close();
         }
 
