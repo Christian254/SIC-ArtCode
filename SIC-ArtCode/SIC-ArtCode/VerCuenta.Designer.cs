@@ -33,7 +33,6 @@
             this.txtIdCuentaRmv = new System.Windows.Forms.TextBox();
             this.btnPDF = new System.Windows.Forms.Button();
             this.btnAjuste = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +65,7 @@
             // 
             // btnPDF
             // 
-            this.btnPDF.Location = new System.Drawing.Point(277, 271);
+            this.btnPDF.Location = new System.Drawing.Point(343, 204);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(138, 23);
             this.btnPDF.TabIndex = 4;
@@ -84,22 +83,11 @@
             this.btnAjuste.UseVisualStyleBackColor = true;
             this.btnAjuste.Click += new System.EventHandler(this.btnAjuste_Click);
             // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(343, 204);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(138, 23);
-            this.btnModificar.TabIndex = 6;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
             // Cuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 306);
-            this.Controls.Add(this.btnModificar);
+            this.ClientSize = new System.Drawing.Size(700, 262);
             this.Controls.Add(this.btnAjuste);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.txtIdCuentaRmv);
@@ -122,6 +110,5 @@
         private System.Windows.Forms.TextBox txtIdCuentaRmv;
         private System.Windows.Forms.Button btnPDF;
         private System.Windows.Forms.Button btnAjuste;
-        private System.Windows.Forms.Button btnModificar;
     }
 }

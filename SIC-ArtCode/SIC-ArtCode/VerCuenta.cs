@@ -60,12 +60,5 @@ namespace SIC_ArtCode
             ajuste.ShowDialog();
             nueva.ActualizarGrid(dataGridView1);
         }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Modificar modificar = new Modificar(int.Parse(txtIdCuentaRmv.Text));
-            modificar.ShowDialog();
-            nueva.ActualizarGrid(dataGridView1);
-        }
     }
 }
