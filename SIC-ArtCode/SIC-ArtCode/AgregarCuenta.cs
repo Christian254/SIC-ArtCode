@@ -91,6 +91,11 @@ namespace SIC_ArtCode
         {
              
         }
+
+        private void grpTipo_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
     //Prueba
 }

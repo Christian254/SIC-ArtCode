@@ -98,6 +98,12 @@
     <Compile Include="EditarEmpleado.Designer.cs">
       <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Periodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Periodo.Designer.cs">
+      <DependentUpon>Periodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GastoAcumulado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GastoAcumulado.resx">
       <DependentUpon>GastoAcumulado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Periodo.resx">
+      <DependentUpon>Periodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerPlanilla.resx">
       <DependentUpon>VerPlanilla.cs</DependentUpon>

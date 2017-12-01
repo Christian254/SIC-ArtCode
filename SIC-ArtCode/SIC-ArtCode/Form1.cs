@@ -32,8 +32,8 @@ namespace SIC_ArtCode
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
             string sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
             MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
-            comando.Parameters.AddWithValue("?idcuenta", 5000);
-            comando.Parameters.AddWithValue("?nombre", "Gasto Por Depreciacion");
+            comando.Parameters.AddWithValue("?idcuenta", 100000);
+            comando.Parameters.AddWithValue("?nombre", "Gaga");
             comando.Parameters.AddWithValue("?tipo", "resultado");
             comando.Parameters.AddWithValue("?saldo", 0);
             comando.Parameters.AddWithValue("?fecha", "2017/11/29");
@@ -42,8 +42,8 @@ namespace SIC_ArtCode
             /* Agregando Cuenta Resultado Gasto Acumulado */
             string sentencia1 = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
             MySqlCommand comando1 = new MySqlCommand(sentencia1, BDComun.Conectar());
-            comando1.Parameters.AddWithValue("?idcuenta", 20000);
-            comando1.Parameters.AddWithValue("?nombre", "Gasto Acumulado");
+            comando1.Parameters.AddWithValue("?idcuenta", 100040);
+            comando1.Parameters.AddWithValue("?nombre", "Gasffto");
             comando1.Parameters.AddWithValue("?tipo", "resultado");
             comando1.Parameters.AddWithValue("?saldo", 0);
             comando1.Parameters.AddWithValue("?fecha", "2017/11/29");
@@ -101,6 +101,17 @@ namespace SIC_ArtCode
         {
             VerPlanilla planilla = new VerPlanilla();
             planilla.ShowDialog();
+        }
+
+        private void periodoContableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void agregarPeriodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Periodo periodo = new Periodo();
+            periodo.ShowDialog();
         }
     }
 }

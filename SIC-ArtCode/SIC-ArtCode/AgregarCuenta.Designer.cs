@@ -98,7 +98,8 @@
             this.grpTipo.Size = new System.Drawing.Size(200, 131);
             this.grpTipo.TabIndex = 5;
             this.grpTipo.TabStop = false;
-            this.grpTipo.Text = "TipoCuenta";
+            this.grpTipo.Text = "Tipo de Periodo";
+            this.grpTipo.Enter += new System.EventHandler(this.grpTipo_Enter);
             // 
             // rdbResultado
             // 
@@ -171,7 +172,7 @@
             // txtFecha
             // 
             this.txtFecha.Enabled = false;
-            this.txtFecha.Location = new System.Drawing.Point(296, 244);
+            this.txtFecha.Location = new System.Drawing.Point(296, 235);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(100, 20);
             this.txtFecha.TabIndex = 9;
