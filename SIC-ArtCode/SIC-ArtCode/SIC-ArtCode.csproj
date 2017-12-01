@@ -55,11 +55,17 @@
     <Compile Include="AgregarCuenta.Designer.cs">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajuste.cs">
+    <Compile Include="AgregarRecurso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ajuste.Designer.cs">
-      <DependentUpon>Ajuste.cs</DependentUpon>
+    <Compile Include="AgregarRecurso.Designer.cs">
+      <DependentUpon>AgregarRecurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarServicio.Designer.cs">
+      <DependentUpon>AgregarServicio.cs</DependentUpon>
     </Compile>
     <Compile Include="BDComun.cs" />
     <Compile Include="Capital.cs">
@@ -74,11 +80,11 @@
     <Compile Include="Comprobacion.Designer.cs">
       <DependentUpon>Comprobacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Depreciacion.cs">
+    <Compile Include="Costeo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Depreciacion.Designer.cs">
-      <DependentUpon>Depreciacion.cs</DependentUpon>
+    <Compile Include="Costeo.Designer.cs">
+      <DependentUpon>Costeo.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -98,23 +104,11 @@
     <Compile Include="EditarEmpleado.Designer.cs">
       <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modificar.cs">
+    <Compile Include="AgregarActividad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modificar.Designer.cs">
-      <DependentUpon>Modificar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Periodo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Periodo.Designer.cs">
-      <DependentUpon>Periodo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GastoAcumulado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GastoAcumulado.Designer.cs">
-      <DependentUpon>GastoAcumulado.cs</DependentUpon>
+    <Compile Include="AgregarActividad.Designer.cs">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPlanilla.cs">
       <SubType>Form</SubType>
@@ -143,14 +137,20 @@
     <Compile Include="VerCuenta.Designer.cs">
       <DependentUpon>VerCuenta.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarActividad.resx">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarCuenta.resx">
       <DependentUpon>AgregarCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarEmpleado.resx">
       <DependentUpon>AgregarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ajuste.resx">
-      <DependentUpon>Ajuste.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarRecurso.resx">
+      <DependentUpon>AgregarRecurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarServicio.resx">
+      <DependentUpon>AgregarServicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capital.resx">
       <DependentUpon>Capital.cs</DependentUpon>
@@ -158,23 +158,14 @@
     <EmbeddedResource Include="Comprobacion.resx">
       <DependentUpon>Comprobacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Depreciacion.resx">
-      <DependentUpon>Depreciacion.cs</DependentUpon>
+    <EmbeddedResource Include="Costeo.resx">
+      <DependentUpon>Costeo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarEmpleado.resx">
       <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GastoAcumulado.resx">
-      <DependentUpon>GastoAcumulado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modificar.resx">
-      <DependentUpon>Modificar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Periodo.resx">
-      <DependentUpon>Periodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerPlanilla.resx">
       <DependentUpon>VerPlanilla.cs</DependentUpon>
