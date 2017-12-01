@@ -64,7 +64,7 @@ namespace SIC_ArtCode
             string sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
             MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
             comando.Parameters.AddWithValue("?idcuenta", idCA);
-            comando.Parameters.AddWithValue("?nombre", "Depreciacion Acumulada "+txtCuenta.Text);
+            comando.Parameters.AddWithValue("?nombre", "Depreciacion Acumulada "+txtCuenta.Text+" (CA)");
             comando.Parameters.AddWithValue("?tipo", "activo");
             comando.Parameters.AddWithValue("?saldo", -1*float.Parse(lblValorD.Text));
             comando.Parameters.AddWithValue("?fecha", "2017/11/29");

@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 157);
+            this.ClientSize = new System.Drawing.Size(298, 157);
             this.Controls.Add(this.btnGasAcum);
             this.Controls.Add(this.btnDep);
             this.MaximizeBox = false;
