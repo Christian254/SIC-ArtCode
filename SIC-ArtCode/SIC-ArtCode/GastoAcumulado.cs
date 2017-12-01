@@ -50,6 +50,7 @@ namespace SIC_ArtCode
         private void btnCA_Click(object sender, EventArgs e)
         {
             idCA++;
+            idCA++;
             float montoGasto = 0;
             MySqlCommand gasto = new MySqlCommand("SELECT * FROM cuenta WHERE idcuenta=20000", BDComun.Conectar());
             gasto.ExecuteNonQuery();
