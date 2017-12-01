@@ -50,6 +50,29 @@ namespace SIC_ArtCode
         private void btnCA_Click(object sender, EventArgs e)
         {
             idCA++;
+            float montoGasto = 0;
+            MySqlCommand gasto = new MySqlCommand("SELECT * FROM cuenta WHERE idcuenta=20000", BDComun.Conectar());
+            gasto.ExecuteNonQuery();
+            MySqlDataReader sqlDataReader = gasto.ExecuteReader();
+            if (sqlDataReader.Read())
+            {
+                montoGasto = sqlDataReader.GetFloat(3);
+            }
+            string sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
+            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+            comando.Parameters.AddWithValue("?idcuenta", idCA);
+            comando.Parameters.AddWithValue("?nombre", "Cuenta Incobrable " + txtCuenta.Text+" (CA)");
+            comando.Parameters.AddWithValue("?tipo", "activo");
+            comando.Parameters.AddWithValue("?saldo", -1 * float.Parse(lblValorGasto.Text));
+            comando.Parameters.AddWithValue("?fecha", "2017/11/29");
+            comando.ExecuteNonQuery();
+            BDComun.Conectar().Close();
+            MessageBox.Show("Se agregó la cuenta: Gasto Acumulado " + txtCuenta.Text);
+            montoGasto += -1 * float.Parse(lblValorGasto.Text);
+            MySqlCommand saldo = new MySqlCommand("UPDATE contables.cuenta SET saldo=?saldo WHERE idcuenta=20000", BDComun.Conectar());
+            saldo.Parameters.AddWithValue("?saldo", montoGasto);
+            saldo.ExecuteNonQuery();
+            BDComun.Conectar().Close();
         }
     }
 }
