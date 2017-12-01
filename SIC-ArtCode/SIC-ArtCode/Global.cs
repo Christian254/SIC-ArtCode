@@ -18,8 +18,9 @@ namespace SIC_ArtCode
     public class Global
     {
         Font fuente = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
-        public double sumatoria = 0;
-        public double capitalContable = 0;
+        public double sumatoria;
+        public double util;
+        public double capitalContable = 0;        
         public void ActualizarGrid(DataGridView grid) //funcion para actualizar el grid
         {
             MySqlCommand cm = new MySqlCommand("SELECT * FROM cuenta", BDComun.Conectar());
@@ -142,7 +143,7 @@ namespace SIC_ArtCode
             documento.Close();
             
         }
-        public void EstadoResultado(Document document)
+        public double EstadoResultado(Document document)
         {
             Paragraph paragraph = new Paragraph("Estado Resultado",fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
@@ -201,13 +202,25 @@ namespace SIC_ArtCode
             document.Add(utilidades);
             document.Add(suma);
             document.Close();
-            BDComun.Conectar().Close();           
+            BDComun.Conectar().Close();
+            return sumatoria;
         }
 
         public void EstadoCapitalPDF(Document document)
         {
+            MySqlCommand cm2 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm2.Parameters.AddWithValue("?tipo", "resultado");
+            MySqlDataReader reader2 = cm2.ExecuteReader();            
+            while (reader2.Read())
+            {
+                sumatoria += reader2.GetDouble("saldo");
+            }
+            BDComun.Conectar().Close();          
+
+            Console.WriteLine(util.ToString());
             Paragraph paragraph = new Paragraph("Estado Capital", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
+            document.Open();
             document.Add(paragraph);
             MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
             cm.Parameters.AddWithValue("?tipo", "capital");
@@ -232,7 +245,14 @@ namespace SIC_ArtCode
                     document.Add(ing);
                     document.Add(new Chunk(" "));
                 }
-            }            
+            }
+            Paragraph utilidad = new Paragraph("utilidad");
+            double utilidadInv = sumatoria * 0.6;
+            Paragraph utilidadInvertida = new Paragraph(utilidadInv.ToString());
+            utilidad.Alignment = Element.ALIGN_LEFT;
+            utilidadInvertida.Alignment = Element.ALIGN_CENTER;
+            document.Add(utilidad);
+            document.Add(utilidadInvertida);
             BDComun.Conectar().Close();
             MySqlCommand cm1 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
             cm1.Parameters.AddWithValue("?tipo", "capital");
@@ -256,6 +276,7 @@ namespace SIC_ArtCode
                     document.Add(new Chunk(" "));
                 }
             }
+            capitalContable += utilidadInv;
             Paragraph suma = new Paragraph(capitalContable.ToString(), fuente);
             Paragraph capCon = new Paragraph("Capital Contable", fuente);
             suma.Alignment = Element.ALIGN_RIGHT;
@@ -268,6 +289,15 @@ namespace SIC_ArtCode
 
         public void BalanceGeneralPDF(Document document)
         {
+            MySqlCommand cm2 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm2.Parameters.AddWithValue("?tipo", "resultado");
+            MySqlDataReader reader2 = cm2.ExecuteReader();
+            while (reader2.Read())
+            {
+                sumatoria += reader2.GetDouble("saldo");
+            }
+            BDComun.Conectar().Close();
+
             Paragraph paragraph = new Paragraph("Balance General", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraph);
@@ -332,27 +362,21 @@ namespace SIC_ArtCode
             }
             }
             document.Add(cap);
-            while (readerCap.Read())
+            MySqlCommand cm1 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm1.Parameters.AddWithValue("?tipo", "capital");
+            MySqlDataReader reader1 = cm1.ExecuteReader();          
+            while (reader1.Read())
             {
-                if (String.Compare(readerCap.GetString("tipo"), "capital") == 0)
-                {
-                    string nombre2 = readerCap.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
-                    string saldo2 = readerCap.GetString("saldo");
-                    string cadena2 = String.Concat(nombre2, "                                          ", saldo2, "\n");
-                    // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
-                    //Paragraph sal = new Paragraph(saldo);
-                    //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
-                    //sal.Alignment = Element.ALIGN_CENTER;                    
-                    //document.Add(nom);
-                    //document.Add(sal);
-                    Paragraph phrase = new Paragraph(cadena2);
-                    phrase.Alignment = Element.ALIGN_RIGHT;
-                    //Paragraph paragraph1 = new Paragraph(cadena);
-                    //document.Add(paragraph1);
-                    document.Add(phrase);
-                    document.Add(new Chunk(" "));
-                }
+                capitalContable += reader1.GetDouble("saldo");                
             }
+            capitalContable += sumatoria*0.6;            
+            Paragraph suma = new Paragraph("Capital Contable             "+capitalContable.ToString());         
+            suma.Alignment = Element.ALIGN_RIGHT;        
+            document.Add(suma);
+            double utilRet = sumatoria * 0.4;
+            Paragraph paragraph1 = new Paragraph("Utilidad Retenida                  "+utilRet.ToString());
+            paragraph1.Alignment = Element.ALIGN_RIGHT;
+            document.Add(paragraph1);
             document.Close();
             BDComun.Conectar().Close();
         }

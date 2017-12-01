@@ -31,7 +31,7 @@ namespace SIC_ArtCode
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");            
         }
 
         private void verCuentasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,6 +114,11 @@ namespace SIC_ArtCode
         {
             Periodo periodo = new Periodo();
             periodo.ShowDialog();
+        }
+
+        private void lblFecha_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
