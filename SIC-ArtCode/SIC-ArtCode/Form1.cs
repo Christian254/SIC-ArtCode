@@ -109,5 +109,11 @@ namespace SIC_ArtCode
             Costeo costeo = new Costeo();
             costeo.ShowDialog();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Periodo periodo = new Periodo();
+            periodo.ShowDialog();
+        }
     }
 }
