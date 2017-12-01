@@ -35,6 +35,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtservicioId = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(150, 345);
+            this.btnAgregar.Location = new System.Drawing.Point(154, 362);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 31);
             this.btnAgregar.TabIndex = 4;
@@ -83,25 +84,36 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 161);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 189);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(344, 150);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtservicioId
             // 
-            this.txtservicioId.Location = new System.Drawing.Point(235, 349);
+            this.txtservicioId.Location = new System.Drawing.Point(235, 366);
             this.txtservicioId.Name = "txtservicioId";
             this.txtservicioId.Size = new System.Drawing.Size(100, 22);
             this.txtservicioId.TabIndex = 6;
+            this.txtservicioId.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(128, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Seleccione el servicio";
             // 
             // AgregarActividad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 405);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtservicioId);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAgregar);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtservicioId;
+        private System.Windows.Forms.Label label1;
     }
 }

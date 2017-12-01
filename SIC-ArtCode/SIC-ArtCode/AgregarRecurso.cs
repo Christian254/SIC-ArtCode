@@ -60,6 +60,9 @@ namespace SIC_ArtCode
             BDComun.Conectar().Close();
             txtId.Clear();
             txtNombre.Clear();
+
+            nueva.sumaActividad(float.Parse(txtCosto.Text.ToString()), int.Parse(txtIdActividad.Text.ToString()));
+            nueva.sumaServicio(float.Parse(txtCosto.Text.ToString()), int.Parse(txtIdServicio.Text.ToString()));
         }
     }
 }

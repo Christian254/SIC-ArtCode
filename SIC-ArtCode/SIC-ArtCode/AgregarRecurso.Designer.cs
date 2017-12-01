@@ -40,6 +40,8 @@
             this.btnMostrar = new System.Windows.Forms.Button();
             this.txtIdServicio = new System.Windows.Forms.TextBox();
             this.txtIdActividad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -105,20 +107,20 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(882, 31);
+            this.dataGridView1.Location = new System.Drawing.Point(832, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(322, 150);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(448, 31);
+            this.dataGridView2.Location = new System.Drawing.Point(445, 54);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(345, 150);
             this.dataGridView2.TabIndex = 11;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -138,6 +140,7 @@
             this.txtIdServicio.Name = "txtIdServicio";
             this.txtIdServicio.Size = new System.Drawing.Size(100, 22);
             this.txtIdServicio.TabIndex = 13;
+            this.txtIdServicio.Visible = false;
             // 
             // txtIdActividad
             // 
@@ -145,12 +148,33 @@
             this.txtIdActividad.Name = "txtIdActividad";
             this.txtIdActividad.Size = new System.Drawing.Size(100, 22);
             this.txtIdActividad.TabIndex = 14;
+            this.txtIdActividad.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(541, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 17);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Seleccione el servicio";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(933, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 17);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Seleccione la actividad";
             // 
             // AgregarRecurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 294);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtIdActividad);
             this.Controls.Add(this.txtIdServicio);
             this.Controls.Add(this.btnMostrar);
@@ -187,5 +211,7 @@
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.TextBox txtIdServicio;
         private System.Windows.Forms.TextBox txtIdActividad;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

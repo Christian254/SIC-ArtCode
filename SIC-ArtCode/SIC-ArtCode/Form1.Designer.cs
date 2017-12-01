@@ -43,9 +43,10 @@
             this.costeoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarActividadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarRecursoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.agregarRecursoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verCosteoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,7 +157,8 @@
             this.costeoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarServicioToolStripMenuItem,
             this.agregarActividadToolStripMenuItem,
-            this.agregarRecursoToolStripMenuItem});
+            this.agregarRecursoToolStripMenuItem,
+            this.verCosteoToolStripMenuItem});
             this.costeoToolStripMenuItem.Name = "costeoToolStripMenuItem";
             this.costeoToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.costeoToolStripMenuItem.Text = "Costeo";
@@ -174,6 +176,13 @@
             this.agregarActividadToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.agregarActividadToolStripMenuItem.Text = "Agregar actividad";
             this.agregarActividadToolStripMenuItem.Click += new System.EventHandler(this.agregarActividadToolStripMenuItem_Click);
+            // 
+            // agregarRecursoToolStripMenuItem
+            // 
+            this.agregarRecursoToolStripMenuItem.Name = "agregarRecursoToolStripMenuItem";
+            this.agregarRecursoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.agregarRecursoToolStripMenuItem.Text = "Agregar recurso";
+            this.agregarRecursoToolStripMenuItem.Click += new System.EventHandler(this.agregarRecursoToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -195,12 +204,12 @@
             this.lblFecha.TabIndex = 5;
             this.lblFecha.Text = "label2";
             // 
-            // agregarRecursoToolStripMenuItem
+            // verCosteoToolStripMenuItem
             // 
-            this.agregarRecursoToolStripMenuItem.Name = "agregarRecursoToolStripMenuItem";
-            this.agregarRecursoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.agregarRecursoToolStripMenuItem.Text = "Agregar recurso";
-            this.agregarRecursoToolStripMenuItem.Click += new System.EventHandler(this.agregarRecursoToolStripMenuItem_Click);
+            this.verCosteoToolStripMenuItem.Name = "verCosteoToolStripMenuItem";
+            this.verCosteoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.verCosteoToolStripMenuItem.Text = "Ver costeo";
+            this.verCosteoToolStripMenuItem.Click += new System.EventHandler(this.verCosteoToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -242,6 +251,7 @@
         private System.Windows.Forms.ToolStripMenuItem agregarServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarActividadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarRecursoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verCosteoToolStripMenuItem;
     }
 }
 

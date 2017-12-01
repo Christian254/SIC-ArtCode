@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data; //Hacer referencia de la libreria de SQl
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
 
 
 namespace SIC_ArtCode
 {
     public partial class Form1 : Form
     {
-       
+
+        Global nueva = new Global();
+
         public Form1()
         {
             InitializeComponent();
@@ -99,6 +102,12 @@ namespace SIC_ArtCode
         {
             AgregarRecurso recurso = new AgregarRecurso();
             recurso.ShowDialog();
+        }
+
+        private void verCosteoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Costeo costeo = new Costeo();
+            costeo.ShowDialog();
         }
     }
 }
