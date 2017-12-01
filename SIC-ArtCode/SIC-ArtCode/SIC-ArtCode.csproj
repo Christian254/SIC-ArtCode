@@ -105,8 +105,11 @@
       <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </Compile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="AgregarActividad.cs">
 =======
+=======
+>>>>>>> parent of 5452122... Modificar Cuenta
     <Compile Include="Periodo.cs">
       <SubType>Form</SubType>
     </Compile>
