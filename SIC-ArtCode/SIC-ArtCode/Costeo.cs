@@ -60,6 +60,8 @@ namespace SIC_ArtCode
             comando.Parameters.AddWithValue("?idrecursos", int.Parse(txtIdRecurso.Text.ToString()));
             comando.ExecuteNonQuery();
             BDComun.Conectar().Close();
+            nueva.sumaActividad(float.Parse(txtCosto.Text), int.Parse(txtActividad.Text));
+            nueva.sumaServicio(float.Parse(txtCosto.Text), int.Parse(txtServicio.Text));
             MessageBox.Show("El costo del recurso ha sido modificado");
             txtCosto.Clear();
         }
