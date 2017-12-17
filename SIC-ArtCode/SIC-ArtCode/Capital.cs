@@ -24,8 +24,12 @@ namespace SIC_ArtCode
             Global global = new Global();
             Document document = new Document();
             document = global.CrearPDF("");
-            double utilidad = global.sumatoria;
             global.EstadoCapitalPDF(document);
+
+        }
+
+        private void Capital_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -49,6 +49,7 @@
             this.Controls.Add(this.btnCapPDF);
             this.Name = "Capital";
             this.Text = "Estado Capital";
+            this.Load += new System.EventHandler(this.Capital_Load);
             this.ResumeLayout(false);
 
         }

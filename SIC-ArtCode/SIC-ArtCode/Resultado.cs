@@ -15,6 +15,7 @@ namespace SIC_ArtCode
 {
     public partial class Resultado : Form
     {
+        public double utilidad;
         public Resultado()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace SIC_ArtCode
             Global global = new Global();
             Document document = new Document();
             document = global.CrearPDF("");
-            global.EstadoResultado(document);
+            utilidad = global.EstadoResultado(document);
         }
     }
 }

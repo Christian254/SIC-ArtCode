@@ -13,17 +13,22 @@ namespace SIC_ArtCode
 {
     public partial class AgregarCuenta : Form
     {
+        
         public AgregarCuenta()
         {
             InitializeComponent();
+            DateTime fechaHoy = DateTime.Today;
+            string fecha = fechaHoy.ToString("s");
+            txtFecha.Text = fecha.Substring(0,10);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
-        {
+        {            
             int idCuenta;
-            double saldo;
+            float saldo;
             string nmbCuenta = txtNmbCuenta.Text;
-            string sentencia;
+            string sentencia, fech=txtFecha.Text;
+            
 
             if (string.IsNullOrWhiteSpace(txtIdCuenta.Text) || string.IsNullOrWhiteSpace(txtNmbCuenta.Text) || string.IsNullOrWhiteSpace(txtSaldo.Text))
             {
@@ -32,43 +37,39 @@ namespace SIC_ArtCode
             else
             {
                 idCuenta = int.Parse(txtIdCuenta.Text);
-                saldo = double.Parse(txtSaldo.Text);
-                sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo) values(?idcuenta, ?nombre, ?tipo, ?saldo)";
+                saldo = float.Parse(txtSaldo.Text);
+                fech = txtFecha.Text;
+                sentencia = @"insert into cuenta(idcuenta, nombre, tipo, saldo, fecha) values(?idcuenta, ?nombre, ?tipo, ?saldo, ?fecha)";
+                
                 MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
-                try
+                comando.Parameters.AddWithValue("?idcuenta", idCuenta);
+                comando.Parameters.AddWithValue("?nombre", nmbCuenta);
+                if (rdbActivo.Checked)
                 {
-                    comando.Parameters.AddWithValue("?idcuenta", idCuenta);
-                    comando.Parameters.AddWithValue("?nombre", nmbCuenta);
-                    if (rdbActivo.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "activo");
-                    }
+                    comando.Parameters.AddWithValue("?tipo", "activo");
+                }                   
+                    comando.Parameters.AddWithValue("?fecha", fech);
 
-                    if (rdbPasivo.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "pasivo");
-                    }
-                    if (rdbCapital.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "capital");
-                    }
-                    if (rdbResultado.Checked)
-                    {
-                        comando.Parameters.AddWithValue("?tipo", "resultado");
-                    }
-
-                    comando.Parameters.AddWithValue("?saldo", saldo);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
-                    BDComun.Conectar().Close();
-                    txtIdCuenta.Clear();
-                    txtNmbCuenta.Clear();
-                    txtSaldo.Clear();
-                }
-                catch(MySqlException)
+                if (rdbPasivo.Checked)
                 {
-                    MessageBox.Show("El id o la cuenta introducida ya existe");
+                    comando.Parameters.AddWithValue("?tipo", "pasivo");
                 }
+                if (rdbCapital.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "capital");
+                }
+                if (rdbResultado.Checked)
+                {
+                    comando.Parameters.AddWithValue("?tipo", "resultado");
+                }
+
+                comando.Parameters.AddWithValue("?saldo", saldo);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("La cuenta: " + nmbCuenta + " ha sido ingresada con exito");
+                BDComun.Conectar().Close();
+                txtIdCuenta.Clear();
+                txtNmbCuenta.Clear();
+                txtSaldo.Clear();
             }
         }
 
@@ -87,6 +88,16 @@ namespace SIC_ArtCode
 
 
 
+
+        }
+
+        private void txtFecha_TextChanged(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void grpTipo_Enter(object sender, EventArgs e)
+        {
 
         }
     }

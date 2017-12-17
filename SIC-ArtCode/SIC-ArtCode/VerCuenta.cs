@@ -20,12 +20,13 @@ namespace SIC_ArtCode
         public Cuentas()
         {
             InitializeComponent();
+            nueva.ActualizarGrid(dataGridView1);
         }              
 
         private void VerCuenta_Load(object sender, EventArgs e)
         {
-            
             nueva.ActualizarGrid(dataGridView1);
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace SIC_ArtCode
             MySqlCommand cm = new MySqlCommand("Delete from cuenta where idcuenta=?idcuenta", BDComun.Conectar());
             cm.Parameters.AddWithValue("?idcuenta", int.Parse(txtIdCuentaRmv.Text));
             cm.ExecuteNonQuery();
-            MessageBox.Show("ELiminado");
+            MessageBox.Show("Eliminado");
             BDComun.Conectar().Close();            
             nueva.ActualizarGrid(dataGridView1);
 
@@ -51,6 +52,20 @@ namespace SIC_ArtCode
             document = nueva.CrearPDF("general");
             nueva.CatalogoCuentasPDF(document, dataGridView1);
 
+        }
+
+        private void btnAjuste_Click(object sender, EventArgs e)
+        {
+            Ajuste ajuste = new Ajuste(int.Parse(txtIdCuentaRmv.Text));
+            ajuste.ShowDialog();
+            nueva.ActualizarGrid(dataGridView1);
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Modificar modificar = new Modificar(int.Parse(txtIdCuentaRmv.Text));
+            modificar.ShowDialog();
+            nueva.ActualizarGrid(dataGridView1);
         }
     }
 }

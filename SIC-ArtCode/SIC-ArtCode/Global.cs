@@ -18,8 +18,9 @@ namespace SIC_ArtCode
     public class Global
     {
         Font fuente = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
-        public double sumatoria = 0;
-        public double capitalContable = 0;
+        public double sumatoria;
+        public double util;
+        public double capitalContable = 0;        
         public void ActualizarGrid(DataGridView grid) //funcion para actualizar el grid
         {
             MySqlCommand cm = new MySqlCommand("SELECT * FROM cuenta", BDComun.Conectar());
@@ -29,6 +30,38 @@ namespace SIC_ArtCode
             grid.DataSource = tabla;
             BDComun.Conectar().Close();
         }
+        public void ActualizarEmpleados(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM empleado", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
+        public void ActualizarServicios(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT idservicio, nombre_servicio FROM servicio", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
+        public void ActualizarActvidades(DataGridView grid, int idServicio)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT idactividad, nombre_actvidad FROM actividad WHERE servicio_idservicio=?servicio_idservicio", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?servicio_idservicio", idServicio);
+            cm.ExecuteNonQuery();
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
         public double sumatoriaCuentas(string tipo)
         {            
             double sumatoria = 0;
@@ -110,7 +143,7 @@ namespace SIC_ArtCode
             documento.Close();
             
         }
-        public void EstadoResultado(Document document)
+        public double EstadoResultado(Document document)
         {
             Paragraph paragraph = new Paragraph("Estado Resultado",fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
@@ -169,13 +202,25 @@ namespace SIC_ArtCode
             document.Add(utilidades);
             document.Add(suma);
             document.Close();
-            BDComun.Conectar().Close();           
+            BDComun.Conectar().Close();
+            return sumatoria;
         }
 
         public void EstadoCapitalPDF(Document document)
         {
+            MySqlCommand cm2 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm2.Parameters.AddWithValue("?tipo", "resultado");
+            MySqlDataReader reader2 = cm2.ExecuteReader();            
+            while (reader2.Read())
+            {
+                sumatoria += reader2.GetDouble("saldo");
+            }
+            BDComun.Conectar().Close();          
+
+            Console.WriteLine(util.ToString());
             Paragraph paragraph = new Paragraph("Estado Capital", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
+            document.Open();
             document.Add(paragraph);
             MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
             cm.Parameters.AddWithValue("?tipo", "capital");
@@ -200,7 +245,14 @@ namespace SIC_ArtCode
                     document.Add(ing);
                     document.Add(new Chunk(" "));
                 }
-            }            
+            }
+            Paragraph utilidad = new Paragraph("utilidad");
+            double utilidadInv = sumatoria * 0.6;
+            Paragraph utilidadInvertida = new Paragraph(utilidadInv.ToString());
+            utilidad.Alignment = Element.ALIGN_LEFT;
+            utilidadInvertida.Alignment = Element.ALIGN_CENTER;
+            document.Add(utilidad);
+            document.Add(utilidadInvertida);
             BDComun.Conectar().Close();
             MySqlCommand cm1 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
             cm1.Parameters.AddWithValue("?tipo", "capital");
@@ -224,6 +276,7 @@ namespace SIC_ArtCode
                     document.Add(new Chunk(" "));
                 }
             }
+            capitalContable += utilidadInv;
             Paragraph suma = new Paragraph(capitalContable.ToString(), fuente);
             Paragraph capCon = new Paragraph("Capital Contable", fuente);
             suma.Alignment = Element.ALIGN_RIGHT;
@@ -236,34 +289,246 @@ namespace SIC_ArtCode
 
         public void BalanceGeneralPDF(Document document)
         {
+            MySqlCommand cm2 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm2.Parameters.AddWithValue("?tipo", "resultado");
+            MySqlDataReader reader2 = cm2.ExecuteReader();
+            while (reader2.Read())
+            {
+                sumatoria += reader2.GetDouble("saldo");
+            }
+            BDComun.Conectar().Close();
+
             Paragraph paragraph = new Paragraph("Balance General", fuente);
             paragraph.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraph);
-            MySqlCommand cm = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
-            cm.Parameters.AddWithValue("?tipo", "activo"); //queres que sea de tipo activo
-            MySqlDataReader reader = cm.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
-            string activos = "Activos";
+            MySqlCommand acti = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            acti.Parameters.AddWithValue("?tipo", "activo"); //queres que sea de tipo activo
+            MySqlCommand pasi = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            pasi.Parameters.AddWithValue("?tipo", "pasivo"); //queres que sea de tipo activo
+            MySqlCommand capi = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            capi.Parameters.AddWithValue("?tipo", "capital"); //queres que sea de tipo activo
+            MySqlDataReader readerAct = acti.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
+            MySqlDataReader readerPas = pasi.ExecuteReader(); // esta función la encontré en inter no me acuerdo como se usaba xD
+            MySqlDataReader readerCap = capi.ExecuteReader();
+            string activos = "Activos", pasivos = "Pasivos", capital = "Capital";
             string nombre = "", saldo = "";
             Paragraph act = new Paragraph(activos, fuente);
+            Paragraph pas = new Paragraph(pasivos, fuente);
+            Paragraph cap = new Paragraph(capital, fuente);
+            pas.Alignment = Element.ALIGN_RIGHT;
+            cap.Alignment = Element.ALIGN_RIGHT;
             document.Add(act);
-            while(reader.Read())
+            document.Add(pas);
+            while (readerAct.Read())
             {
-                if(String.Compare(reader.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
-                {                   
-                    nombre = reader.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
-                    saldo = reader.GetString("saldo");
-                    Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
-                    Paragraph sal = new Paragraph(saldo);
-                    nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
-                    sal.Alignment = Element.ALIGN_CENTER;                    
-                    document.Add(nom);
-                    document.Add(sal);
+                if (String.Compare(readerAct.GetString("tipo"), "activo") == 0) // con el lector comparo el valor que tiene el "tipo" con la cadena "activo"
+                {
+                    nombre = String.Concat(readerAct.GetString("nombre"),"          ");  // Aquí se guardan el valor de las variables en tipo string
+                    saldo = readerAct.GetString("saldo");
+                    string cadena = String.Concat(nombre, "     ", saldo, "\n");
+                    // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
+                    //Paragraph sal = new Paragraph(saldo);
+                    //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
+                    //sal.Alignment = Element.ALIGN_CENTER;                    
+                    //document.Add(nom);
+                    //document.Add(sal);
+                    Paragraph phrase = new Paragraph(cadena);
+                    phrase.Alignment = Element.ALIGN_LEFT;                  
+                    //Paragraph paragraph1 = new Paragraph(cadena);
+                    //document.Add(paragraph1);
+                    document.Add(phrase);
                     document.Add(new Chunk(" "));
                 }
             }
+            while (readerPas.Read())
+            { 
+            if (String.Compare(readerPas.GetString("tipo"), "pasivo") == 0)
+            {
+                string nombre1 = readerPas.GetString("nombre");  // Aquí se guardan el valor de las variables en tipo string
+                string saldo1 = readerPas.GetString("saldo");
+                string cadena1 = String.Concat(nombre1, "                                          ", saldo1, "\n");
+                // Paragraph nom = new Paragraph(nombre); // un parrafo tiene que recibir una cadena 
+                //Paragraph sal = new Paragraph(saldo);
+                //nom.Alignment = Element.ALIGN_LEFT;    // el nombre de la cuenta tiene que ir a la izquierda y el saldo centrado
+                //sal.Alignment = Element.ALIGN_CENTER;                    
+                //document.Add(nom);
+                //document.Add(sal);
+                Paragraph phrase = new Paragraph(cadena1);
+                phrase.Alignment = Element.ALIGN_RIGHT;
+                //Paragraph paragraph1 = new Paragraph(cadena);
+                //document.Add(paragraph1);
+                document.Add(phrase);
+                document.Add(new Chunk(" "));
+            }
+            }
+            document.Add(cap);
+            MySqlCommand cm1 = new MySqlCommand("Select * from cuenta where tipo=?tipo", BDComun.Conectar());
+            cm1.Parameters.AddWithValue("?tipo", "capital");
+            MySqlDataReader reader1 = cm1.ExecuteReader();          
+            while (reader1.Read())
+            {
+                capitalContable += reader1.GetDouble("saldo");                
+            }
+            capitalContable += sumatoria*0.6;            
+            Paragraph suma = new Paragraph("Capital Contable             "+capitalContable.ToString());         
+            suma.Alignment = Element.ALIGN_RIGHT;        
+            document.Add(suma);
+            double utilRet = sumatoria * 0.4;
+            Paragraph paragraph1 = new Paragraph("Utilidad Retenida                  "+utilRet.ToString());
+            paragraph1.Alignment = Element.ALIGN_RIGHT;
+            document.Add(paragraph1);
             document.Close();
             BDComun.Conectar().Close();
         }
 
+        public void PlanillaPDF(Document documento, DataGridView grid)
+        {
+            PdfPTable table = new PdfPTable(grid.ColumnCount);
+            Paragraph paragraph = new Paragraph("Planilla", fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;
+            documento.Add(paragraph);
+            table.DefaultCell.Padding = 3;
+            int i, j;
+            for (i = 0; i < grid.ColumnCount; i++)
+            {
+                table.AddCell(grid.Columns[i].HeaderText);
+            }
+            for (i = 0; i < grid.RowCount; i++)
+            {
+
+                for (j = 0; j < grid.ColumnCount; j++)
+                {
+                    if (grid[j, i].Value != null)
+                    {
+                        table.AddCell(new Phrase(grid[j, i].Value.ToString()));
+                    }
+                }
+                table.CompleteRow();
+            }
+            documento.Add(new Chunk(""));
+            documento.Add(new Chunk(""));
+            documento.Add(table);
+            documento.Close();
+
+        }
+
+        public void sumaActividad(float costoRecurso, int idActividad)
+        {
+            string sentencia;
+
+            sentencia = @"UPDATE actividad SET costo_actividad = costo_actividad + ?costoRecurso WHERE idactividad = ?idActividad";
+            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+            comando.Parameters.AddWithValue("?costoRecurso", costoRecurso);
+            comando.Parameters.AddWithValue("?idActividad", idActividad);
+            comando.ExecuteNonQuery();
+            BDComun.Conectar().Close();
+        }
+
+        public void sumaServicio(float costoRecurso, int idServicio)
+        {
+            string sentencia;
+            sentencia = @"UPDATE servicio SET costo_total = costo_total + ?costoRecurso WHERE idservicio = ?idServicio";
+            MySqlCommand comando = new MySqlCommand(sentencia, BDComun.Conectar());
+            comando.Parameters.AddWithValue("?costoRecurso", costoRecurso);
+            comando.Parameters.AddWithValue("?idServicio", idServicio);
+            comando.ExecuteNonQuery();
+            BDComun.Conectar().Close();
+        }
+
+        public void ActualizarRecursos(DataGridView grid, int idActividades)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT idrecursos, nombre_recursos, costo_recurso FROM recursos WHERE actividad_idactividad=?actividad_idactividad", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?actividad_idactividad", idActividades);
+            cm.ExecuteNonQuery();
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+        public void ActualizarServiciosTotal(DataGridView grid)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM servicio", BDComun.Conectar());
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
+        public void ActualizarActvidadesTotal(DataGridView grid, int idServicio)
+        {
+            MySqlCommand cm = new MySqlCommand("SELECT idactividad, nombre_actvidad, costo_actividad FROM actividad WHERE servicio_idservicio=?servicio_idservicio", BDComun.Conectar());
+            cm.Parameters.AddWithValue("?servicio_idservicio", idServicio);
+            cm.ExecuteNonQuery();
+            MySqlDataAdapter datos = new MySqlDataAdapter(cm);
+            DataTable tabla = new DataTable();
+            datos.Fill(tabla);
+            grid.DataSource = tabla;
+            BDComun.Conectar().Close();
+        }
+
+        /*public void CosteoPDF(Document document)
+        {
+            document.Open();
+            Paragraph paragraph = new Paragraph("Costos", fuente);
+            paragraph.Alignment = Element.ALIGN_CENTER;
+            document.Add(paragraph);
+
+            MySqlCommand cm = new MySqlCommand("SELECT COUNT(*) FROM servicio", BDComun.Conectar());
+            int countServicios = int.Parse(cm.ExecuteScalar().ToString());
+            BDComun.Conectar().Close();
+
+            MySqlCommand cm1 = new MySqlCommand("SELECT COUNT(*) FROM actividad", BDComun.Conectar());
+            int countActividades = int.Parse(cm.ExecuteScalar().ToString());
+            BDComun.Conectar().Close();
+
+            MySqlCommand cm2 = new MySqlCommand("SELECT COUNT(*) FROM recursos", BDComun.Conectar());
+            int countRecursos = int.Parse(cm.ExecuteScalar().ToString());
+            BDComun.Conectar().Close();
+
+            int i = 1;
+
+            while (i < countServicios)
+            {
+                MySqlCommand servicioCheck = new MySqlCommand("SELECT * FROM servicio WHERE idservicio=?idservicio", BDComun.Conectar());
+                servicioCheck.Parameters.AddWithValue("?idservicio", i);
+                MySqlDataReader reader = servicioCheck.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    MySqlCommand cm3 = new MySqlCommand("SELECT * FROM servicio WHERE idservicio=?idservicio", BDComun.Conectar());
+                    cm3.Parameters.AddWithValue("?idservicio", i);
+                    MySqlDataReader readerServ = cm3.ExecuteReader();
+                    string servicios = "Servicios";
+                    string nombre = "", costo = "";
+                    Paragraph serv = new Paragraph(servicios, fuente);
+                    serv.Alignment = Element.ALIGN_CENTER;
+                    document.Open();
+                    document.Add(serv);
+                    while (readerServ.Read())
+                    {
+                        if(String.Compare(readerServ.GetString("idservicio"), i.ToString()) == 0)
+                        {
+                            nombre = String.Concat(readerServ.GetString("nombre_servicio"), "     ");
+                            costo = readerServ.GetString("costo_total");
+                            string cadena = String.Concat(nombre, "    ", costo, "\n");
+                            Paragraph phrase = new Paragraph(cadena);
+                            phrase.Alignment = Element.ALIGN_LEFT;
+                            document.Add(phrase);
+                            document.Add(new Chunk(" "));
+                        }
+                    }
+                    document.Close();
+                    BDComun.Conectar().Close();
+                }
+                else
+                {
+                    document.Close();
+                    BDComun.Conectar().Close();
+                }
+                i++;
+            }
+             
+        } */
     }
 }
